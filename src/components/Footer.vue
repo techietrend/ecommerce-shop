@@ -2,7 +2,7 @@
 
   <div class="d-flex flex-column">
       <!-- FOOTER -->
-      <footer class="w-100 py-4 flex-shrink-0">
+      <footer class="w-100 py-4 flex-shrink-0 bg-dark">
           <div class="container py-4">
               <div class="row gy-4 gx-5">
                   <div class="col-lg-3 col-md-6">
