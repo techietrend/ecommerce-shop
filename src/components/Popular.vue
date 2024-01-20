@@ -36,9 +36,9 @@ export default {
     populars: [
       {
         img: "popular/1.jpg",
-        title: "Appel Mac Book Pro",
-        price: "$ 93.358.01",
-        bio: " Small plates, salads & sandwiches - an intimate setting with 12 indoor seats plus patio seating.",
+        title: "Intercomunicador Wayxin R5",
+        price: "Usd $ 99.8",
+        bio: " Intercomunicador R5 para cascos, an intimate setting with 12 indoor seats plus patio seatin.",
       },
       {
         img: "popular/2.png",
@@ -48,13 +48,13 @@ export default {
       },
       {
         img: "popular/3.jpg",
-        title: "Appel Mac Book Pro",
+        title: "Mini Microfono",
         price: "$ 93.358.01",
         bio: " Small plates, salads & sandwiches - an intimate setting with 12 indoor seats plus patio seating.",
       },
       {
         img: "popular/4.png",
-        title: "Appel Mac Book Pro",
+        title: "Reloj",
         price: "$ 93.358.01",
         bio: " Small plates, salads & sandwiches - an intimate setting with 12 indoor seats plus patio seating.",
       },
