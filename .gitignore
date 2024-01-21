@@ -2,6 +2,8 @@
 
 # Ignore node_modules directory
 node_modules/
+.node_modules
+node_modules
 
 # Ignore build output
 dist/

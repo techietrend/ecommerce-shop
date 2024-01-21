@@ -9,7 +9,7 @@
                 <v-row class="fill-height" align="end">
                   <v-col>
                     <div class="btn d-flex justify-content-center">
-                      <v-btn @click="showDetail" class="bg-primary">Buy Now</v-btn>
+                      <v-btn @click="showDetail" class="bg-primary w-50">Buy Now</v-btn>
                     </div>
                   </v-col>
                 </v-row>

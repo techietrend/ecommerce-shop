@@ -1,6 +1,6 @@
 <template>
   <v-row>
-    <v-col cols="3" sm="3" v-for="(feature, i) in featured" :key="i">
+    <v-col v-for="(feature, i) in featured" :key="i" cols="12" sm="6" md="4" lg="3">
       <v-card class="mx-auto my-12 pb-4" max-width="374">
         <v-img height="250" class="mx-4" :src="feature.img"></v-img>
 
@@ -29,6 +29,7 @@
     </v-col>
   </v-row>
 </template>
+
 
 <script>
 export default {
