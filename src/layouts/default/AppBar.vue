@@ -45,7 +45,7 @@
     <v-list-item>
       <v-btn @click="openCarritoDialog">
         <v-icon color="white" class="icono">mdi-cart</v-icon>
-        <p class="count bg-warning">{{ carritoCount }}</p>
+        <p class="count bg-warning" :class="{ 'fall-effect': countChanged }">{{ carritoCount }}</p>
       </v-btn>
     </v-list-item>
 
@@ -61,6 +61,11 @@ import { useRouter } from 'vue-router';
 import Carrito from '@/components/Carrito.vue';
 import { useStore } from 'vuex';
 const store = useStore();
+
+const router = useRouter();
+const carritoDialog = ref(false);
+const countChanged = ref(false);
+
 const items = [
   { title: 'Componentes de Pc', route: '/componentes-pc' },
   { title: 'Bicicleta', route: '/bicicleta' },
@@ -68,13 +73,9 @@ const items = [
   { title: 'Impresora 3D', route: '/impresora-3d' },
 ];
 
-const router = useRouter();
-const carritoDialog = ref(false);
-
 const navigateTo = (route) => {
   router.push(route);
 };
-
 
 const carritoCount = computed(() => store.state.carrito.length);
 
@@ -82,7 +83,12 @@ const openCarritoDialog = () => {
   carritoDialog.value = true;
 };
 
-// Actualizar el conteo del carrito cuando cambie el estado del carrito
+watch(carritoCount, () => {
+  countChanged.value = true;
+  setTimeout(() => {
+    countChanged.value = false;
+  }, 300); 
+});
 </script>
 
 <style scoped>
@@ -112,5 +118,18 @@ const openCarritoDialog = () => {
 .icono:hover {
   transform: scale(1.1);
   transition: transform 0.3s ease-in-out;
+}
+
+.fall-effect {
+  animation: fall 0.3s ease-in-out;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(50px);
+  }
 }
 </style>

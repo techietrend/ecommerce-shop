@@ -19,7 +19,13 @@
               </p>
             </v-card-text>
 
-            <v-btn @click="agregarAlCarrito(feature)" variant="outlined">
+            <v-btn
+              :loading="feature.loading"
+              class="flex-grow-1"
+              height="48"
+              variant="outlined"
+              @click="agregarAlCarrito(feature)"
+            >
               Añadir al carrito
             </v-btn>
           </v-row>
@@ -29,48 +35,57 @@
   </v-row>
 </template>
 
-
 <script setup>
 import { useStore } from 'vuex';
+import { ref } from 'vue';
 
 const store = useStore();
+const featured = ref([
+  {
+    img: "image/5.png",
+    title: "Appel Mac Book Pro",
+    price: "$ 93.358.01",
+    bio: " Small plates, salads & sandwiches - an intimate setting with 12 indoor seats plus patio seating.",
+    loading: false,
+  },
+  {
+    img: "image/6.png",
+    title: "Appel Mac Book Pro",
+    price: "$ 93.358.01",
+    bio: " Small plates, salads & sandwiches - an intimate setting with 12 indoor seats plus patio seating.",
+    loading: false,
+  },
+  {
+    img: "image/7.png",
+    title: "Appel Mac Book Pro",
+    price: "$ 93.358.01",
+    bio: " Small plates, salads & sandwiches - an intimate setting with 12 indoor seats plus patio seating.",
+    loading: false,
+  },
+  {
+    img: "image/8.png",
+    title: "Appel Mac Book Pro",
+    price: "$ 93.358.01",
+    bio: " Small plates, salads & sandwiches - an intimate setting with 12 indoor seats plus patio seating.",
+    loading: false,
+  },
+]);
 
-const agregarAlCarrito = (producto) => {
-  store.commit('agregarAlCarrito', {
-    nombre: producto.title,
-    precio: producto.price,
-    imagen: producto.img,
-  });
+const agregarAlCarrito = async (producto) => {
+  producto.loading = true;
+  try {
+  
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    store.commit('agregarAlCarrito', {
+      nombre: producto.title,
+      precio: producto.price,
+      imagen: producto.img,
+    });
+  } finally {
+    producto.loading = false;
+  }
 };
-
-    const featured = [
-      {
-        img: "image/5.png",
-        title: "Appel Mac Book Pro",
-        price: "$ 93.358.01",
-        bio: " Small plates, salads & sandwiches - an intimate setting with 12 indoor seats plus patio seating.",
-      },
-      {
-        img: "image/6.png",
-        title: "Appel Mac Book Pro",
-        price: "$ 93.358.01",
-        bio: " Small plates, salads & sandwiches - an intimate setting with 12 indoor seats plus patio seating.",
-      },
-      {
-        img: "image/7.png",
-        title: "Appel Mac Book Pro",
-        price: "$ 93.358.01",
-        bio: " Small plates, salads & sandwiches - an intimate setting with 12 indoor seats plus patio seating.",
-      },
-      {
-        img: "image/8.png",
-        title: "Appel Mac Book Pro",
-        price: "$ 93.358.01",
-        bio: " Small plates, salads & sandwiches - an intimate setting with 12 indoor seats plus patio seating.",
-      },
-    ]
 </script>
 
 <style scoped>
-
 </style>
