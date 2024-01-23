@@ -7,21 +7,42 @@
     <v-app-bar-title>
       <img src="../../assets/logo_light.png" alt="Logo" class="img">
     </v-app-bar-title>
-    <v-text-field
-      density="compact"
-      variant="solo"
-      label="Search products"
-      append-inner-icon="mdi-magnify"
-      single-line
-      hide-details
-      fixed
-    ></v-text-field>
+  
+    <div class="text-center">
+    <v-menu
+      open-on-hover
+    >
+      <template v-slot:activator="{ props }">
+        <v-btn
+          color="white"
+          v-bind="props"
+        >
+          Category
+        </v-btn>
+      </template>
+
+      <v-list>
+        <v-list-item
+          v-for="(item, index) in items"
+          :key="index"
+        >
+          <v-list-item-title>{{ item.title }}</v-list-item-title>
+        </v-list-item>
+      </v-list>
+    </v-menu>
+  </div>
     <v-spacer></v-spacer>
   </v-app-bar>
 </template>
 
-<script>
-export default {};
+<script setup>
+
+const items = [
+        { title: 'Click Me' },
+        { title: 'Click Me' },
+        { title: 'Click Me' },
+        { title: 'Click Me 2' },
+      ]
 </script>
 
 <style scoped>
@@ -29,5 +50,4 @@ export default {};
 .img{
   width: 100px;
 }
-
 </style>

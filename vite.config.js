@@ -32,6 +32,7 @@ export default defineConfig({
       '.ts',
       '.tsx',
       '.vue',
+      '.jpg',
     ],
   },
   server: {

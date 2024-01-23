@@ -3,9 +3,17 @@
     <v-col v-for="(popular, i) in populars" :key="i" cols="12" sm="6" md="4" lg="3">
       <v-card class="mx-auto my-12 pb-4" max-width="374">
         <v-img height="250" class="mx-4 img" :src="popular.img"></v-img>
-        <v-btn size="small" color="surface-variant" variant="text" icon="mdi-heart"></v-btn>
+     
         <v-card-item class="mt-n4">
-          <v-card-title class="text-center">{{ popular.title }}</v-card-title>
+          <v-card-title class="text-center">
+            {{ popular.title }}
+            <v-btn size="small"  
+                       color="surface-variant"  
+                       variant="text" 
+                       icon="mdi-heart"
+                       >
+                 </v-btn>
+          </v-card-title>
         </v-card-item>
 
         <v-card-text>

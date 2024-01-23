@@ -9,7 +9,7 @@
                 <v-row class="fill-height" align="end">
                   <v-col>
                     <div class="btn d-flex justify-content-center">
-                      <v-btn @click="showDetail" class="bg-primary w-50">Buy Now</v-btn>
+                      <v-btn @click="showDetail" class="w-25" style="background-color: #080A21; color: white;">Buy Now</v-btn>
                     </div>
                   </v-col>
                 </v-row>
@@ -60,7 +60,7 @@
                       </v-card-text>
                     </v-col>
                     <v-col cols="12" sm="6">
-                      <v-img height="250" class="mx-4" src="image/13.jpg"></v-img>
+                      <v-img height="250" class="mx-4" :src="image"></v-img>
                     </v-col>
                   </v-row>
                 </v-card>
@@ -83,7 +83,7 @@
                       </v-card-text>
                     </v-col>
                     <v-col cols="12" sm="6">
-                      <v-img height="250" class="mx-4" src="image/14.jpg"></v-img>
+                      <v-img height="250" class="mx-4" :src="image1"></v-img>
                     </v-col>
                   </v-row>
                 </v-card>
@@ -106,7 +106,7 @@
                       </v-card-text>
                     </v-col>
                     <v-col cols="12" sm="6">
-                      <v-img height="250" class="mx-4" src="image/15.jpg"></v-img>
+                      <v-img height="250" class="mx-4" :src="image2"></v-img>
                     </v-col>
                   </v-row>
                 </v-card>
@@ -124,7 +124,13 @@ import Popular from "@/components/Popular.vue";
 import Featured from "@/components/Featured.vue";
 import Client from "@/components/Client.vue";
 import router from "@/router";
+import imagen from '../../public/image/13.jpg';
+import imagen1 from '../../public/image/14.jpg';
+import imagen2 from '../../public/image/15.jpg';
 
+const image = imagen;
+const image1 =imagen1;
+const image2 = imagen2;
 
 const items = [
   {
