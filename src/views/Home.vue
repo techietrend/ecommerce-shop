@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-main>
+    <v-main style="background-color: whitesmoke;">
       <v-container>
         <h3>Todo lo que necesites en robótica de competencia</h3>
         <p class="text-muted">7 años de experiencia en robótica competitiva.</p>
