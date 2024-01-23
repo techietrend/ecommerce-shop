@@ -69,12 +69,11 @@ const agregarAlCarrito = (producto) => {
     const now = new Date();
     const difference = endDate - now;
 
-    const days = Math.floor(difference / (1000 * 60 * 60 * 24));
     const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((difference % (1000 * 60)) / 1000);
 
-    countdown.value = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    countdown.value = `${hours}h ${minutes}m ${seconds}s`;
 
     if (difference <= 0) {
       clearInterval(interval);
