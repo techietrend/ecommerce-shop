@@ -16,10 +16,6 @@
           </v-col>
           <v-toolbar color="transparent">
             <v-toolbar-title>Popular Products</v-toolbar-title>
-
-            <v-spacer></v-spacer>
-            <v-btn icon="mdi mdi-chevron-left"></v-btn>
-            <v-btn icon="mdi mdi-chevron-right"></v-btn>
           </v-toolbar>
           <v-col cols="12" sm="12" class="mt-n10">
             <Popular />
@@ -27,9 +23,6 @@
           <v-toolbar color="transparent" class="mt-n10">
             <v-toolbar-title>Featured Products</v-toolbar-title>
 
-            <v-spacer></v-spacer>
-            <v-btn icon="mdi mdi-chevron-left"></v-btn>
-            <v-btn icon="mdi mdi-chevron-right"></v-btn>
           </v-toolbar>
           <v-col cols="12" sm="12" class="mt-n10">
             <Featured />
@@ -148,13 +141,7 @@ const items = [
   },
 ]
 
-const showDetail = () => {
-  router.push('/detail');
-};
 </script>
 
 <style scoped>
-.btn {
-  margin-bottom: 30px;
-}
 </style>

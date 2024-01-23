@@ -36,7 +36,7 @@
     </v-btn>
   </v-list-item>
 
-    <v-dialog v-model="carritoDialog" max-width="1000">
+    <v-dialog v-model="carritoDialog" max-width="1100" max-height="600">
       <Carrito />
     </v-dialog>
   </v-app-bar>

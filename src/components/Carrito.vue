@@ -4,9 +4,10 @@
         <v-list>
             <v-list-item-group v-if="carrito.length > 0">
                 <v-list-item v-for="(product, index) in carrito" :key="index">
-                    <div class="item-content">
-                        <div>
-                            <v-img :src="product.imagen" style="width: 60px;" />
+                    <hr>
+                    <div class="item-content justify-space-between">
+                        <div class="pl-5">
+                            <v-img :src="product.imagen" style="width: 100px;" />
                         </div>
                         <div>
                             <v-list-item-title>{{ product.nombre }}</v-list-item-title>
@@ -68,17 +69,10 @@ const total = computed(() => {
     return totalSinEnvio.toFixed(2);
 });
 
-const totalConEnvio = computed(() => {
-    const totalSinEnvio = carrito.value.reduce((acc, product) => acc + parseFloat(product.precio), 0);
-    if (tipoEnvio.value === 'Envío Internacional - DHL Express: $ 46.3') {
-        return (totalSinEnvio + 46.3).toFixed(2);
-    }
-    return totalSinEnvio.toFixed(2);
-});
 
-const nombre = ref('');
-const celular = ref('');
-const direccion = ref('');
+// const nombre = ref('');
+// const celular = ref('');
+// const direccion = ref('');
 
 const tiposEnvio = [
     'Recogida Local - Concretar Por Whatsapp',
