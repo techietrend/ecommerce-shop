@@ -7,7 +7,7 @@
                     <hr>
                     <div class="item-content justify-space-between">
                         <div class="pl-5">
-                            <v-img :src="product.imagen" style="width: 100px;" />
+                            <v-img :src="product.imagen" style="width: 100px; height: 100px;" />
                         </div>
                         <div>
                             <v-list-item-title>{{ product.nombre }}</v-list-item-title>
