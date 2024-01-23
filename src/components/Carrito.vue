@@ -43,7 +43,7 @@
         </v-card-actions>
 
         <v-card-actions class="d-flex justify-content-center bg-white">
-            <v-btn text color="black">
+            <v-btn text color="black" class="w-100">
                 Finalizar tu compra
             </v-btn>
         </v-card-actions>
