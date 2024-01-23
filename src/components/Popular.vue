@@ -15,13 +15,14 @@
             {{ popular.bio }}
           </div>
           <v-row align="center" class="mx-0 mt-2 d-flex justify-content-center">
-            <v-btn 
-               @click="agregarAlCarrito(popular)"
-               prepend-icon="mdi-currency-usd" 
-               variant="outlined"
-            >
-              {{ popular.price }}
-              Agregar al carrito
+            <v-card-text class="d-flex justify-content-center">
+              <p class="font-weight-medium">
+                $USD {{ popular.price }}
+              </p>
+            </v-card-text>
+
+            <v-btn @click="agregarAlCarrito(popular)" variant="outlined">
+              Añadir al carrito
             </v-btn>
             <v-rating :model-value="4.5" color="amber" density="compact" half-increments readonly size="small"
               class="w-100 d-flex justify-content-center mt-2">
