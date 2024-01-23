@@ -3,7 +3,7 @@
     <v-col cols="12" sm="6" md="3">
       <v-card class="mx-auto my-12 pb-4" max-width="374" flat color="#080A21">
         <v-card-item class="top-day">
-          <v-card-title class="text-center">Deals of the day</v-card-title>
+          <v-card-title class="text-center">Ofertas del dia</v-card-title>
         </v-card-item>
 
         <v-card-text>
@@ -22,14 +22,21 @@
           <v-card-title class="text-center">{{ client.title }}</v-card-title>
         </v-card-item>
 
+      
         <v-card-text>
           <div class="text-center">
             {{ client.bio }}
           </div>
-          <v-row align="center" class="mx-0 mt-2">
-            <v-rating :model-value="4.5" color="amber" density="compact" half-increments readonly size="small"></v-rating>
-            <v-spacer></v-spacer>
-            <div class="text-grey ms-4">{{ client.price }}</div>
+          <v-row align="center" class="mx-0 mt-2 d-flex justify-content-center">
+            <v-card-text class="d-flex justify-content-center">
+              <p class="font-weight-medium">
+                $USD {{ client.price }}
+              </p>
+            </v-card-text>
+
+            <v-btn @click="agregarAlCarrito(client)" variant="outlined">
+              Añadir al carrito
+            </v-btn>
           </v-row>
         </v-card-text>
       </v-card>
@@ -40,6 +47,18 @@
 
 <script setup>
 import { ref, onMounted } from 'vue';
+import { useStore } from 'vuex';
+
+const store = useStore();
+
+const agregarAlCarrito = (producto) => {
+  store.commit('agregarAlCarrito', {
+    nombre: producto.title,
+    precio: producto.price,
+    imagen: producto.img,
+  });
+};
+
 
     const countdown = ref('');
     const calculateCountdown = () => {

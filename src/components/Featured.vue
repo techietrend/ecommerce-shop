@@ -12,17 +12,16 @@
           <div class="text-center">
             {{ feature.bio }}
           </div>
-          <v-row align="center" class="mx-0 mt-2">
-            <v-rating
-              :model-value="4.5"
-              color="amber"
-              density="compact"
-              half-increments
-              readonly
-              size="small"
-            ></v-rating>
-            <v-spacer></v-spacer>
-            <div class="text-grey ms-4">{{ feature.price }}</div>
+          <v-row align="center" class="mx-0 mt-2 d-flex justify-content-center">
+            <v-card-text class="d-flex justify-content-center">
+              <p class="font-weight-medium">
+                $USD {{ feature.price }}
+              </p>
+            </v-card-text>
+
+            <v-btn @click="agregarAlCarrito(feature)" variant="outlined">
+              Añadir al carrito
+            </v-btn>
           </v-row>
         </v-card-text>
       </v-card>
@@ -31,10 +30,20 @@
 </template>
 
 
-<script>
-export default {
-  data: () => ({
-    featured: [
+<script setup>
+import { useStore } from 'vuex';
+
+const store = useStore();
+
+const agregarAlCarrito = (producto) => {
+  store.commit('agregarAlCarrito', {
+    nombre: producto.title,
+    precio: producto.price,
+    imagen: producto.img,
+  });
+};
+
+    const featured = [
       {
         img: "image/5.png",
         title: "Appel Mac Book Pro",
@@ -59,9 +68,9 @@ export default {
         price: "$ 93.358.01",
         bio: " Small plates, salads & sandwiches - an intimate setting with 12 indoor seats plus patio seating.",
       },
-    ],
-  }),
-};
+    ]
 </script>
 
-<style></style>
+<style scoped>
+
+</style>
