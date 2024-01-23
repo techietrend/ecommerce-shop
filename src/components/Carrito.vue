@@ -1,0 +1,100 @@
+<template>
+    <v-card style="background-color: #080A21" class="text-white">
+        <v-card-title class="text-white">Contenido del Carrito</v-card-title>
+
+        <v-list>
+            <v-list-item-group v-if="carrito.length > 0">
+                <v-list-item v-for="(product, index) in carrito" :key="index">
+                    <div class="item-content">
+                        <div>
+                            <v-img :src="product.imagen" style="width: 60px;" />
+                        </div>
+                        <div>
+                            <v-list-item-title>{{ product.nombre }}</v-list-item-title>
+                        </div>
+                        <div>
+                            <v-list-item-title> Usd {{ product.precio }}</v-list-item-title>
+                        </div>
+                        <v-list-item-action>
+                            <v-list-item-subtitle>Eliminar producto</v-list-item-subtitle>
+                             <span>&#160;&#160;</span>
+                            <v-btn icon @click="removeFromCarrito(index)">
+                                <v-icon size="small" color="red">mdi-delete</v-icon>
+                            </v-btn>
+                        </v-list-item-action>
+                    </div>
+                </v-list-item>
+            </v-list-item-group>
+            <v-list-item v-else>
+                <v-list-item-subtitle>No hay productos en el carrito</v-list-item-subtitle>
+            </v-list-item>
+        </v-list>
+
+        <v-divider></v-divider>
+
+        <v-card-actions class="justify-end">
+            <v-btn text>
+                Subtotal: {{ total }}
+            </v-btn>
+        </v-card-actions>
+
+        <v-card-actions class="justify-end">
+            <v-select v-model="tipoEnvio" :items="tiposEnvio" label="Tipo de Envío"></v-select>
+        </v-card-actions>
+
+        <v-card-actions class="d-flex justify-content-center bg-white">
+            <v-btn text color="black">
+                Finalizar tu compra
+            </v-btn>
+        </v-card-actions>
+    </v-card>
+</template>
+  
+<script setup>
+import { useStore } from 'vuex';
+import { computed, ref } from 'vue';
+
+const store = useStore();
+const carrito = computed(() => store.state.carrito);
+
+const removeFromCarrito = (index) => {
+    store.commit('eliminarDelCarrito', index);
+};
+
+const total = computed(() => {
+    const totalSinEnvio = carrito.value.reduce((acc, product) => acc + parseFloat(product.precio), 0);
+    if (tipoEnvio.value === 'Envío Internacional - DHL Express: $ 46.3') {
+        return (totalSinEnvio + 46.3).toFixed(2);
+    }
+    return totalSinEnvio.toFixed(2);
+});
+
+const totalConEnvio = computed(() => {
+    const totalSinEnvio = carrito.value.reduce((acc, product) => acc + parseFloat(product.precio), 0);
+    if (tipoEnvio.value === 'Envío Internacional - DHL Express: $ 46.3') {
+        return (totalSinEnvio + 46.3).toFixed(2);
+    }
+    return totalSinEnvio.toFixed(2);
+});
+
+const nombre = ref('');
+const celular = ref('');
+const direccion = ref('');
+
+const tiposEnvio = [
+    'Recogida Local - Concretar Por Whatsapp',
+     'Envío Internacional - DHL Express: $ 46.3'
+    
+];
+
+const tipoEnvio = ref(tiposEnvio[0]);
+</script>
+  
+<style scoped>
+.item-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+</style>
+  

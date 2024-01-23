@@ -42,7 +42,7 @@
 
           <v-col cols="12" sm="12" class="mt-n10">
             <v-row>
-              <v-col cols="3" sm="4">
+              <v-col cols="12" sm="4">
                 <v-card class="mx-auto my-12 pb-4" max-width="374">
                   <v-row>
                     <v-col cols="12" sm="6">
@@ -65,7 +65,7 @@
                   </v-row>
                 </v-card>
               </v-col>
-              <v-col cols="3" sm="4">
+              <v-col cols="12" sm="4">
                 <v-card class="mx-auto my-12 pb-4" max-width="374" color="red">
                   <v-row>
                     <v-col cols="12" sm="6">
@@ -88,7 +88,7 @@
                   </v-row>
                 </v-card>
               </v-col>
-              <v-col cols="3" sm="4">
+              <v-col cols="12" sm="4">
                 <v-card class="mx-auto my-12 pb-4" max-width="374">
                   <v-row>
                     <v-col cols="12" sm="6">

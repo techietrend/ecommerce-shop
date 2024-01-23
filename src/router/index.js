@@ -16,8 +16,18 @@ const routes = [
       },
       {
       path:'/detail',
-      name:'Detaul',
+      name:'Detail',
       component: () => import('@/views/Detail.vue')
+      },
+      {
+        path:'/bicicleta',
+        name:'Bicicleta',
+        component: () => import('@/views/Bicicleta.vue')
+      },
+      {
+        path:'/componentes-pc',
+        name:'ComponentesPc',
+        component: () => import('@/views/ComponentesPc.vue')
       },
     ],
   },
