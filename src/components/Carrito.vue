@@ -1,6 +1,12 @@
 <template>
     <v-card>
-        <v-card-title class="text-white" style="background-color: #080A21">Contenido del Carrito</v-card-title>
+        <div class="d-flex" style="background-color: #080A21">
+            <v-card-title class="text-white">Contenido del Carrito</v-card-title>
+            <v-icon class="ml-auto mt-4 pr-5" color="white" @click="cerrarCarritoDialog">
+                mdi-close
+            </v-icon>
+        </div>
+
         <v-list>
             <v-list-item-group v-if="carrito.length > 0">
                 <v-list-item v-for="(product, index) in carrito" :key="index">
@@ -17,7 +23,7 @@
                         </div>
                         <v-list-item-action>
                             <v-list-item-subtitle>Eliminar producto</v-list-item-subtitle>
-                             <span>&#160;&#160;</span>
+                            <span>&#160;&#160;</span>
                             <v-btn icon @click="removeFromCarrito(index)">
                                 <v-icon size="small" color="red">mdi-delete</v-icon>
                             </v-btn>
@@ -39,19 +45,18 @@
         </v-card-actions>
 
         <v-card-actions class="justify-end">
-            <v-select v-model="tipoEnvio" 
-                      :items="tiposEnvio" 
-                     label="Tipo de Envío"
-                     :disabled="carrito.length === 0"
-                     >
-           </v-select>
+            <v-select v-model="tipoEnvio" :items="tiposEnvio" label="Tipo de Envío" :disabled="carrito.length === 0">
+            </v-select>
         </v-card-actions>
 
         <v-card-actions class="d-flex justify-lg-space-around bg-white">
-            <v-btn text color="primary" class="w-auto" @click="agregarMasProductos">
+            <v-btn text color="primary" class="w-auto" @click="vaciarCarro" :disabled="carrito.length === 0">
+                Vaciar Carrito
+            </v-btn>
+            <v-btn text color="primary" class="w-auto" @click="cerrarCarritoDialog" :disabled="carrito.length === 0">
                 Agregar mas productos
             </v-btn>
-            <v-btn text color="white" class="w-auto bg-dark" :disabled="carrito.length === 0">
+            <v-btn text color="primary" class="w-auto bg-white" :disabled="carrito.length === 0">
                 Finalizar tu compra
             </v-btn>
         </v-card-actions>
@@ -64,7 +69,7 @@ import { computed, ref } from 'vue';
 
 const store = useStore();
 const carrito = computed(() => store.state.carrito);
-const carritoDialog = ref(false);
+
 
 
 const removeFromCarrito = (index) => {
@@ -82,15 +87,20 @@ const total = computed(() => {
 
 const tiposEnvio = [
     'Recogida Local - Concretar Por Whatsapp',
-     'Envío Internacional - DHL Express: $ 46.3'
-    
+    'Envío Internacional - DHL Express: $ 46.3'
+
 ];
 
+const vaciarCarro = () => {
+    store.commit('vaciarCarrito')
+}
 const tipoEnvio = ref(tiposEnvio[0]);
 
-const agregarMasProductos = () => {
-    carritoDialog.value = false;
+const cerrarCarritoDialog = () => {
+    store.commit('toggleCarritoDialog', false);
 };
+
+
 </script>
   
 <style scoped>

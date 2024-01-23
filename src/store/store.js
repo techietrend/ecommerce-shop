@@ -13,5 +13,11 @@ export default createStore({
     eliminarDelCarrito(state, index) {
       state.carrito.splice(index, 1);
     },
+    vaciarCarrito(state) {
+      state.carrito = [];
+    },
+    toggleCarritoDialog(state) {
+      state.dialog = !state.dialog;
+    },
   },
 });

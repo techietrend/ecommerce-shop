@@ -45,11 +45,17 @@
     <v-list-item>
       <v-btn @click="openCarritoDialog">
         <v-icon color="white" class="icono">mdi-cart</v-icon>
-        <p class="count bg-warning" :class="{ 'fall-effect': countChanged }">{{ carritoCount }}</p>
+        <p class="count bg-warning" 
+           :class="{ 'fall-effect': countChanged }">
+           {{ carritoCount }}
+        </p>
       </v-btn>
     </v-list-item>
 
-    <v-dialog v-model="carritoDialog" max-width="1100" max-height="600">
+    <v-dialog v-model="store.state.dialog"
+              max-width="1100" 
+              max-height="600"
+              >
       <Carrito />
     </v-dialog>
   </v-app-bar>
@@ -63,7 +69,6 @@ import { useStore } from 'vuex';
 const store = useStore();
 
 const router = useRouter();
-const carritoDialog = ref(false);
 const countChanged = ref(false);
 
 const items = [
@@ -80,7 +85,7 @@ const navigateTo = (route) => {
 const carritoCount = computed(() => store.state.carrito.length);
 
 const openCarritoDialog = () => {
-  carritoDialog.value = true;
+  store.commit('toggleCarritoDialog', true);
 };
 
 watch(carritoCount, () => {
