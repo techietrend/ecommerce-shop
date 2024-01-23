@@ -1,6 +1,6 @@
 <template>
-    <v-card style="background-color: #080A21" class="text-white">
-        <v-card-title class="text-white">Contenido del Carrito</v-card-title>
+    <v-card>
+        <v-card-title class="text-white" style="background-color: #080A21">Contenido del Carrito</v-card-title>
         <v-list>
             <v-list-item-group v-if="carrito.length > 0">
                 <v-list-item v-for="(product, index) in carrito" :key="index">
@@ -34,16 +34,24 @@
 
         <v-card-actions class="justify-end">
             <v-btn text>
-                Subtotal: {{ total }}
+                Subtotal: Usd$ {{ total }}
             </v-btn>
         </v-card-actions>
 
         <v-card-actions class="justify-end">
-            <v-select v-model="tipoEnvio" :items="tiposEnvio" label="Tipo de Envío"></v-select>
+            <v-select v-model="tipoEnvio" 
+                      :items="tiposEnvio" 
+                     label="Tipo de Envío"
+                     :disabled="carrito.length === 0"
+                     >
+           </v-select>
         </v-card-actions>
 
-        <v-card-actions class="d-flex justify-content-center bg-white">
-            <v-btn text color="black" class="w-100 ">
+        <v-card-actions class="d-flex justify-lg-space-around bg-white">
+            <v-btn text color="primary" class="w-auto" @click="agregarMasProductos">
+                Agregar mas productos
+            </v-btn>
+            <v-btn text color="white" class="w-auto bg-dark" :disabled="carrito.length === 0">
                 Finalizar tu compra
             </v-btn>
         </v-card-actions>
@@ -56,6 +64,8 @@ import { computed, ref } from 'vue';
 
 const store = useStore();
 const carrito = computed(() => store.state.carrito);
+const carritoDialog = ref(false);
+
 
 const removeFromCarrito = (index) => {
     store.commit('eliminarDelCarrito', index);
@@ -70,10 +80,6 @@ const total = computed(() => {
 });
 
 
-// const nombre = ref('');
-// const celular = ref('');
-// const direccion = ref('');
-
 const tiposEnvio = [
     'Recogida Local - Concretar Por Whatsapp',
      'Envío Internacional - DHL Express: $ 46.3'
@@ -81,6 +87,10 @@ const tiposEnvio = [
 ];
 
 const tipoEnvio = ref(tiposEnvio[0]);
+
+const agregarMasProductos = () => {
+    carritoDialog.value = false;
+};
 </script>
   
 <style scoped>

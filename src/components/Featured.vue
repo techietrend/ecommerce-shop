@@ -44,47 +44,51 @@ const featured = ref([
   {
     img: "image/5.png",
     title: "Appel Mac Book Pro",
-    price: "$ 93.358.01",
+    price: "93.358.01",
     bio: " Small plates, salads & sandwiches - an intimate setting with 12 indoor seats plus patio seating.",
     loading: false,
   },
   {
     img: "image/6.png",
     title: "Appel Mac Book Pro",
-    price: "$ 93.358.01",
+    price: "93.358.01",
     bio: " Small plates, salads & sandwiches - an intimate setting with 12 indoor seats plus patio seating.",
     loading: false,
   },
   {
     img: "image/7.png",
     title: "Appel Mac Book Pro",
-    price: "$ 93.358.01",
+    price: "93.358.01",
     bio: " Small plates, salads & sandwiches - an intimate setting with 12 indoor seats plus patio seating.",
     loading: false,
   },
   {
     img: "image/8.png",
     title: "Appel Mac Book Pro",
-    price: "$ 93.358.01",
+    price: "93.358.01",
     bio: " Small plates, salads & sandwiches - an intimate setting with 12 indoor seats plus patio seating.",
     loading: false,
   },
 ]);
 
-const agregarAlCarrito = async (producto) => {
+const agregarAlCarrito = (producto) => {
   producto.loading = true;
-  try {
-  
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    store.commit('agregarAlCarrito', {
-      nombre: producto.title,
-      precio: producto.price,
-      imagen: producto.img,
-    });
-  } finally {
-    producto.loading = false;
-  }
+
+  setTimeout(() => {
+    try {
+      const productoParaCarrito = {
+        nombre: producto.title,
+        precio: producto.price,
+        imagen: producto.img,
+      };
+
+      store.commit('agregarAlCarrito', productoParaCarrito);
+    } finally {
+      producto.loading = false;
+    }
+  }, 1000);
 };
+
 </script>
 
 <style scoped>
