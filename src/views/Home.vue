@@ -2,15 +2,14 @@
   <v-app>
     <v-main>
       <v-container>
+        <h3>Todo lo que necesites en robótica de competencia</h3>
+        <p class="text-muted">7 años de experiencia en robótica competitiva.</p>
         <v-row>
           <v-col cols="12" sm="12">
             <div>
               <v-carousel>
-
                 <v-carousel-item v-for="(item, i) in items" :key="i" :src="item.src" cover>
-
                 </v-carousel-item>
-
               </v-carousel>
             </div>
           </v-col>

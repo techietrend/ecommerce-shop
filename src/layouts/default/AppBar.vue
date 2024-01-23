@@ -3,7 +3,7 @@
     <v-app-bar-title>
       <img src="@/assets/logo_light.png" alt="Logo" class="img">
     </v-app-bar-title>
-  
+
     <div>
       <v-menu>
         <template v-slot:activator="{ props }">
@@ -14,27 +14,40 @@
         </template>
 
         <v-list>
-          <v-list-item
-            v-for="(item, index) in items"
-            :key="index"
-          >
+          <v-list-item v-for="(item, index) in items" :key="index">
             <v-list @click="navigateTo(item.route)" class="w-auto btn">
               {{ item.title }}
             </v-list>
           </v-list-item>
         </v-list>
       </v-menu>
+      <v-btn 
+           color="white"
+           @click="openCarritoDialog"
+           >
+        Carrito
+      </v-btn>
+      <v-btn 
+           color="white"
+           >
+        Robot Challenge
+      </v-btn>
+      <v-btn 
+           color="white"
+           >
+        Sobre nosotros
+      </v-btn>
     </div>
-    
+
     <v-spacer></v-spacer>
     <v-spacer></v-spacer>
 
     <v-list-item>
-    <v-btn @click="openCarritoDialog">
-      <v-icon color="white" class="icono">mdi-cart</v-icon>
-      <p class="count bg-warning">{{ carritoCount }}</p>
-    </v-btn>
-  </v-list-item>
+      <v-btn @click="openCarritoDialog">
+        <v-icon color="white" class="icono">mdi-cart</v-icon>
+        <p class="count bg-warning">{{ carritoCount }}</p>
+      </v-btn>
+    </v-list-item>
 
     <v-dialog v-model="carritoDialog" max-width="1100" max-height="600">
       <Carrito />
@@ -81,7 +94,7 @@ const openCarritoDialog = () => {
   color: brown;
 }
 
-.count{
+.count {
   border-radius: 100%;
   width: 25px;
   height: 25px;
@@ -91,12 +104,13 @@ const openCarritoDialog = () => {
   align-items: center;
   color: white;
 }
-.icono{
+
+.icono {
   font-size: 20px;
 }
+
 .icono:hover {
   transform: scale(1.1);
   transition: transform 0.3s ease-in-out;
 }
-
 </style>

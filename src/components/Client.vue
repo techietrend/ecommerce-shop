@@ -1,8 +1,9 @@
 <template>
   <v-row style="background-color: #080A21;">
     <v-col cols="12" sm="6" md="3">
-      <v-card class="mx-auto my-12 pb-4" max-width="374" flat color="#080A21">
-        <v-card-item class="top-day">
+      <v-card class="mx-auto my-12 pb-4" max-width="374" flat color="#080A21" elevation="10">
+     <v-img :src="avata" max-height="200px"></v-img>
+        <v-card-item >
           <v-card-title class="text-center">Ofertas del dia</v-card-title>
         </v-card-item>
 
@@ -48,6 +49,10 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import { useStore } from 'vuex';
+import avatar from '../assets/avatar.png'
+
+
+const avata = avatar;
 
 const store = useStore();
 
