@@ -4,17 +4,15 @@
       <v-container>
         <v-row>
           <v-col cols="12" sm="12">
-            <v-carousel>
-              <v-carousel-item v-for="(item, i) in items" :key="i" :src="item.src" cover>
-                <v-row class="fill-height" align="end">
-                  <v-col>
-                    <div class="btn d-flex justify-content-center">
-                      <v-btn @click="showDetail" class="w-25" style="background-color: #080A21; color: white;">Buy Now</v-btn>
-                    </div>
-                  </v-col>
-                </v-row>
-              </v-carousel-item>
-            </v-carousel>
+            <div>
+              <v-carousel>
+      
+                <v-carousel-item v-for="(item, i) in items" :key="i" :src="item.src" cover>
+
+                </v-carousel-item>
+     
+              </v-carousel>
+            </div>
           </v-col>
           <v-toolbar color="transparent">
             <v-toolbar-title>Popular Products</v-toolbar-title>
@@ -129,7 +127,7 @@ import imagen1 from '../../public/image/14.jpg';
 import imagen2 from '../../public/image/15.jpg';
 
 const image = imagen;
-const image1 =imagen1;
+const image1 = imagen1;
 const image2 = imagen2;
 
 const items = [

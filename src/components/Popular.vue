@@ -1,7 +1,7 @@
 <template>
   <v-row>
     <v-col v-for="(popular, i) in populars" :key="i" cols="12" sm="6" md="4" lg="3">
-      <v-card class="mx-auto my-12 pb-4" max-width="374">
+      <v-card class="mx-auto my-12 pb-4" max-width="374" elevation="2">
         <v-img height="250" class="mx-4 img" :src="popular.img"></v-img>
 
         <v-card-item class="mt-n4">
@@ -63,30 +63,6 @@ const populars = [
   {
     img: "popular/3.jpg",
     title: "Mini Microfono",
-    price: "99.8",
-    bio: " Small plates, salads & sandwiches - an intimate setting with 12 indoor seats plus patio seating.",
-  },
-  {
-    img: "popular/4.png",
-    title: "Reloj",
-    price: "99.8",
-    bio: " Small plates, salads & sandwiches - an intimate setting with 12 indoor seats plus patio seating.",
-  },
-  {
-    img: "popular/4.png",
-    title: "Reloj",
-    price: "99.8",
-    bio: " Small plates, salads & sandwiches - an intimate setting with 12 indoor seats plus patio seating.",
-  },
-  {
-    img: "popular/4.png",
-    title: "Reloj",
-    price: "99.8",
-    bio: " Small plates, salads & sandwiches - an intimate setting with 12 indoor seats plus patio seating.",
-  },
-  {
-    img: "popular/4.png",
-    title: "Reloj",
     price: "99.8",
     bio: " Small plates, salads & sandwiches - an intimate setting with 12 indoor seats plus patio seating.",
   },

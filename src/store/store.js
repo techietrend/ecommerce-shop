@@ -4,6 +4,7 @@ import { createStore } from 'vuex';
 export default createStore({
   state: {
     carrito: [],
+    stateShop:false,
   },
   mutations: {
     agregarAlCarrito(state, producto) {

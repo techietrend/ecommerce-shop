@@ -1,7 +1,6 @@
 <template>
     <v-card style="background-color: #080A21" class="text-white">
         <v-card-title class="text-white">Contenido del Carrito</v-card-title>
-
         <v-list>
             <v-list-item-group v-if="carrito.length > 0">
                 <v-list-item v-for="(product, index) in carrito" :key="index">
@@ -43,7 +42,7 @@
         </v-card-actions>
 
         <v-card-actions class="d-flex justify-content-center bg-white">
-            <v-btn text color="black" class="w-100">
+            <v-btn text color="black" class="w-100 ">
                 Finalizar tu compra
             </v-btn>
         </v-card-actions>
