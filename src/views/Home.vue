@@ -6,7 +6,7 @@
         <p class="text-muted">7 años de experiencia en robótica competitiva.</p>
         <v-row>
           <v-col cols="12" sm="12">
-             <div class="w-100 bg-warning" elevation-10>
+             <div class="w-100 bg-red" elevation-10>
               <v-carousel>
                 <v-carousel-item v-for="(item, i) in items" :key="i" :src="item.src" cover>
                 </v-carousel-item>
