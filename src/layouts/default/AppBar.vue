@@ -28,7 +28,9 @@
         </v-list>
       </v-menu>
 
-      <v-btn color="white">
+      <v-btn color="white"
+      @click="openCarritoDialog"
+      >
         Carrito
       </v-btn>
 
