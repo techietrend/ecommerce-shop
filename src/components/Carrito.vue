@@ -6,7 +6,6 @@
                 mdi-close
             </v-icon>
         </div>
-
         <v-list>
             <v-list-item-group v-if="carrito.length > 0">
                 <v-list-item v-for="(product, index) in carrito" :key="index">
@@ -21,7 +20,7 @@
                             <v-btn icon @click="incrementarCantidad(index)">
                                 <v-icon size="small" color="primary">mdi-plus</v-icon>
                             </v-btn>
-                    
+
                         </div>
                         <div>
                             <v-list-item-title class="text-muted">Cantidad x {{ product.cantidad }}</v-list-item-title>
@@ -35,7 +34,6 @@
                         <v-list-item-action>
                             <v-list-item-subtitle>Eliminar producto</v-list-item-subtitle>
                             <span>&#160;&#160;</span>
-
                             <v-btn icon @click="removeFromCarrito(index)">
                                 <v-icon size="small" color="red">mdi-delete</v-icon>
                             </v-btn>
@@ -52,14 +50,10 @@
         <div class="bg-dark text-white">
             <v-card-actions class="justify-end">
                 <v-btn text>
-                    Subtotal: Usd$ {{ total }}
+                    Subtotal: Usd$ {{ subtotal }}
                 </v-btn>
             </v-card-actions>
 
-            <v-card-actions class="justify-end">
-                <v-select v-model="tipoEnvio" :items="tiposEnvio" label="Tipo de Envío" :disabled="carrito.length === 0">
-                </v-select>
-            </v-card-actions>
             <v-card-actions class="d-flex justify-lg-space-around">
                 <v-btn text color="white" class="w-auto bg-red" @click="vaciarCarro" :disabled="carrito.length === 0">
                     Vaciar Carrito
@@ -68,25 +62,22 @@
                     :disabled="carrito.length === 0">
                     Agregar mas productos
                 </v-btn>
-                <v-btn text color="white" class="w-auto bg-info" :disabled="carrito.length === 0">
-                    Finalizar tu compra
+                <v-btn text color="white" class="w-auto bg-info" :disabled="carrito.length === 0" @click="facturacion">
+                    Continuar compra
                 </v-btn>
             </v-card-actions>
         </div>
-
-
-
     </v-card>
 </template>
   
 <script setup>
 import { useStore } from 'vuex';
 import { computed, ref } from 'vue';
+import { useRouter } from 'vue-router';
 
+const router = useRouter()
 const store = useStore();
 const carrito = computed(() => store.state.carrito);
-
-
 
 const removeFromCarrito = (index) => {
     store.commit('eliminarDelCarrito', index);
@@ -100,33 +91,27 @@ const quitarCantidad = (index) => {
     store.commit('quitarCantidadProducto', index);
 };
 
-
-
-const total = computed(() => {
-  const totalSinEnvio = carrito.value.reduce((acc, product) => acc + parseFloat(product.precio) * product.cantidad, 0);
-  if (tipoEnvio.value === 'Envío Internacional - DHL Express: $ 46.3') {
-      return (totalSinEnvio + 46.3).toFixed(2);
-  }
-  return totalSinEnvio.toFixed(2);
+const subtotal = computed(() => {
+  return store.getters.totalSinEnvio;
 });
 
-
-
-const tiposEnvio = [
-    'Recogida Local - Concretar Por Whatsapp',
-    'Envío Internacional - DHL Express: $ 46.3'
-
-];
 
 const vaciarCarro = () => {
     store.commit('vaciarCarrito')
 }
-const tipoEnvio = ref(tiposEnvio[0]);
 
 const cerrarCarritoDialog = () => {
     store.commit('toggleCarritoDialog', false);
 };
 
+
+const facturacion = () => { 
+  router.push({
+    name: 'Facturacion',
+  });
+
+  store.commit('toggleCarritoDialog', false);
+}
 
 </script>
   

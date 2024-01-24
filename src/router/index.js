@@ -1,4 +1,3 @@
-// Composables
 import { createRouter, createWebHistory } from 'vue-router'
 
 const routes = [
@@ -33,6 +32,11 @@ const routes = [
         path:'/impresora-3d',
         name:'Impresoras3D',
         component: () => import('@/views/Impresoras3D.vue')
+      },
+      {
+        path:'/facturacion',
+        name:'Facturacion',
+        component: () => import('@/views/Facturacion.vue'),
       },
     ],
   },

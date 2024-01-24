@@ -1,0 +1,44 @@
+.img {
+    width: 100px;
+  }
+  @media(max-width:768px){
+    .img{
+      display: none;
+    }
+  }
+  .btn:hover {
+    color: brown;
+  }
+  
+  .count {
+    border-radius: 100%;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    color: white;
+  }
+  
+  .icono {
+    font-size: 20px;
+  }
+  
+  .icono:hover {
+    transform: scale(1.1);
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .fall-effect {
+    animation: fall 0.3s ease-in-out;
+  }
+  
+  @keyframes fall {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(50px);
+    }
+  }

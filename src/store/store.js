@@ -5,6 +5,7 @@ export default createStore({
   state: {
     carrito: [],
     dialog: false,
+    subTotal: 0,
   },
   mutations: {
     agregarAlCarrito(state, producto) {
@@ -31,4 +32,11 @@ export default createStore({
       }
     },
   },
+  getters: {
+    totalSinEnvio: (state) => {
+      const totalSinEnvio = state.carrito.reduce((acc, product) => acc + parseFloat(product.precio) * product.cantidad, 0);
+     state.subTotal = totalSinEnvio
+      return totalSinEnvio.toFixed(2);
+    },
+}, 
 });

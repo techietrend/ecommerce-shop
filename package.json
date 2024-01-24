@@ -11,6 +11,8 @@
   "dependencies": {
     "core-js": "^3.29.0",
     "roboto-fontface": "*",
+    "uuid": "^9.0.1",
+    "vee-validate": "^4.12.4",
     "vue": "^3.2.0",
     "vue-router": "^4.0.0",
     "vuetify": "^3.0.0",
