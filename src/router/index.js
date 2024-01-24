@@ -29,6 +29,11 @@ const routes = [
         name:'ComponentesPc',
         component: () => import('@/views/ComponentesPc.vue')
       },
+      {
+        path:'/impresora-3d',
+        name:'Impresoras3D',
+        component: () => import('@/views/Impresoras3D.vue')
+      },
     ],
   },
 ]

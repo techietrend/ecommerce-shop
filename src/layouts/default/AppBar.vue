@@ -1,16 +1,16 @@
 <template>
   <v-app-bar fixed style="background-color: #080A21;">
     <v-app-bar-title>
-      <img src="@/assets/logo_light.png" alt="Logo" class="img">
+      <img src="@/assets/logo_light.png" alt="Logo" class="img" 
+      @click="inicio"
+      >
     </v-app-bar-title>
 
-    <div>
-      <v-btn 
-           color="white"
-           @click="inicio"
-           >
-           Inicio
+    <v-container class="d-flex justify-content-center">
+      <v-btn color="white" @click="inicio">
+        Inicio
       </v-btn>
+
       <v-menu>
         <template v-slot:activator="{ props }">
           <v-btn color="white" v-bind="props">
@@ -27,41 +27,32 @@
           </v-list-item>
         </v-list>
       </v-menu>
-      <v-btn 
-           color="white"
-           @click="openCarritoDialog"
-           >
+
+      <v-btn color="white">
         Carrito
       </v-btn>
-      <v-btn 
-           color="white"
-           >
+
+      <v-btn color="white">
         Robot Challenge
       </v-btn>
-      <v-btn 
-           color="white"
-           >
+
+      <v-btn color="white">
         Sobre nosotros
       </v-btn>
-    </div>
+    </v-container>
 
-    <v-spacer></v-spacer>
     <v-spacer></v-spacer>
 
     <v-list-item>
       <v-btn @click="openCarritoDialog">
         <v-icon color="white" class="icono">mdi-cart</v-icon>
-        <p class="count bg-warning" 
-           :class="{ 'fall-effect': countChanged }">
-           {{ carritoCount }}
+        <p class="count bg-warning" :class="{ 'fall-effect': countChanged }">
+          {{ carritoCount }}
         </p>
       </v-btn>
     </v-list-item>
 
-    <v-dialog v-model="store.state.dialog"
-              max-width="1100" 
-              max-height="600"
-              >
+    <v-dialog v-model="store.state.dialog" max-width="1100" max-height="600">
       <Carrito />
     </v-dialog>
   </v-app-bar>
@@ -72,19 +63,21 @@ import { ref, watch, computed } from 'vue';
 import { useRouter } from 'vue-router';
 import Carrito from '@/components/Carrito.vue';
 import { useStore } from 'vuex';
-const store = useStore();
 
+const store = useStore();
 const router = useRouter();
-const inicio = () =>{
-  router.push("/")
-}
+
+const inicio = () => {
+  router.push('/');
+};
+
 const countChanged = ref(false);
 
 const items = [
   { title: 'Componentes de Pc', route: '/componentes-pc' },
-  { title: 'Bicicleta', route: '/bicicleta' },
+  { title: 'Bicicleta componentes', route: '/bicicleta' },
   { title: 'Componentes electronicos', route: '/componentes-electronicos' },
-  { title: 'Impresora 3D', route: '/impresora-3d' },
+  { title: 'Impresora 3D y CNC', route: '/impresora-3d' },
 ];
 
 const navigateTo = (route) => {
@@ -97,11 +90,12 @@ const openCarritoDialog = () => {
   store.commit('toggleCarritoDialog', true);
 };
 
+
 watch(carritoCount, () => {
   countChanged.value = true;
   setTimeout(() => {
     countChanged.value = false;
-  }, 300); 
+  }, 300);
 });
 </script>
 
@@ -145,5 +139,10 @@ watch(carritoCount, () => {
   100% {
     transform: translateY(50px);
   }
+}
+@media(max-width:768px){
+  .container{
+    display: grid;
+  };
 }
 </style>

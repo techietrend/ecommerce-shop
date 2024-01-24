@@ -2,7 +2,7 @@
     <v-container>
     <v-row>
         <v-toolbar color="transparent" class="mt-5">
-            <v-toolbar-title>Luces de  Bicicletas</v-toolbar-title>
+            <v-toolbar-title>Impresora 3D y CNC</v-toolbar-title>
           </v-toolbar>
       <v-col v-for="(bicicleta, i) in bicicletas" :key="i" cols="12" sm="6" md="4" lg="3">
         <v-card class="mx-auto my-12 pb-4" max-width="374" elevation="3">
@@ -50,62 +50,61 @@
   
   const bicicletas = ref([
     {
-      img: "image/Luz-led.jpg",
-      title: "Luz recargable",
-      price: "500",
+      img: "image/impresora1.jpg",
+      title: "Sensor de Filamento para",
+      price: "5500",
       bio: "Luz para bicicleta recargable por USB. Esta luz es ideal para utilizar en tu bicicleta, cuenta con tecnologia LED T6 y es impermeable.",
       loading: false,
     },
     {
-      img: "image/Luz-led1.jpg",
+      img: "image/impresora2.png",
+      title: "Luz ultrasonica",
+      price: "634300",
+      bio: "Luz para bicicleta recargable por USB. Esta luz es ideal para utilizar en tu bicicleta, cuenta con tecnologia LED T6 y es impermeable.",
+      loading: false,
+    },
+    {
+      img: "image/impresora3.jpg",
+      title: "Luz ultrasonica",
+      price: "60230",
+      bio: "Luz para bicicleta recargable por USB. Esta luz es ideal para utilizar en tu bicicleta, cuenta con tecnologia LED T6 y es impermeable.",
+      loading: false,
+    },
+    {   
+      img: "image/impresora4.jpg",
       title: "Luz ultrasonica",
       price: "600",
       bio: "Luz para bicicleta recargable por USB. Esta luz es ideal para utilizar en tu bicicleta, cuenta con tecnologia LED T6 y es impermeable.",
       loading: false,
     },
     {
-      img: "image/Luz-led1.jpg",
-      title: "Luz ultrasonica",
+      img: "image/impresora1.jpg",
+      title: "Luz recargable",
+      price: "500",
+      bio: "Luz para bicicleta recargable por USB. Esta luz es ideal para utilizar en tu bicicleta, cuenta con tecnologia LED T6 y es impermeable.",
+      loading: false,
+    },
+    {
+      img: "image/impresora2.png",
+      title: "Sensor de Filamento para",
       price: "600",
       bio: "Luz para bicicleta recargable por USB. Esta luz es ideal para utilizar en tu bicicleta, cuenta con tecnologia LED T6 y es impermeable.",
       loading: false,
     },
     {
-      img: "image/Luz-led1.jpg",
-      title: "Luz ultrasonica",
+      img: "image/impresora3.jpg",
+      title: "Sensor de Filamento para",
       price: "600",
       bio: "Luz para bicicleta recargable por USB. Esta luz es ideal para utilizar en tu bicicleta, cuenta con tecnologia LED T6 y es impermeable.",
       loading: false,
     },
-    {
-      img: "image/Luz-led.jpg",
-      title: "Luz recargable",
-      price: "500",
+    {   
+      img: "image/impresora4.jpg",
+      title: "Sensor de Filamento para",
+      price: "600",
       bio: "Luz para bicicleta recargable por USB. Esta luz es ideal para utilizar en tu bicicleta, cuenta con tecnologia LED T6 y es impermeable.",
       loading: false,
     },
-    {
-      img: "image/Luz-led.jpg",
-      title: "Luz recargable",
-      price: "500",
-      bio: "Luz para bicicleta recargable por USB. Esta luz es ideal para utilizar en tu bicicleta, cuenta con tecnologia LED T6 y es impermeable.",
-      loading: false,
-    },
-    {
-      img: "image/Luz-led.jpg",
-      title: "Luz recargable",
-      price: "500",
-      bio: "Luz para bicicleta recargable por USB. Esta luz es ideal para utilizar en tu bicicleta, cuenta con tecnologia LED T6 y es impermeable.",
-      loading: false,
-    },
-    {
-      img: "image/Luz-led.jpg",
-      title: "Luz recargable",
-      price: "500",
-      bio: "Luz para bicicleta recargable por USB. Esta luz es ideal para utilizar en tu bicicleta, cuenta con tecnologia LED T6 y es impermeable.",
-      loading: false,
-    },
-    // Agrega más bicicletas según sea necesario
   ]);
   
   const agregarAlCarrito = (producto) => {
