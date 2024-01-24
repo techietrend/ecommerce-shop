@@ -5,6 +5,12 @@
     </v-app-bar-title>
 
     <div>
+      <v-btn 
+           color="white"
+           @click="inicio"
+           >
+           Inicio
+      </v-btn>
       <v-menu>
         <template v-slot:activator="{ props }">
           <v-btn color="white" v-bind="props">
@@ -69,6 +75,9 @@ import { useStore } from 'vuex';
 const store = useStore();
 
 const router = useRouter();
+const inicio = () =>{
+  router.push("/")
+}
 const countChanged = ref(false);
 
 const items = [
