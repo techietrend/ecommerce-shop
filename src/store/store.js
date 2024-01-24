@@ -8,7 +8,8 @@ export default createStore({
   },
   mutations: {
     agregarAlCarrito(state, producto) {
-      state.carrito.push(producto);
+      const productoConCantidad = { ...producto, cantidad: 1 };
+      state.carrito.push(productoConCantidad);
     },
     eliminarDelCarrito(state, index) {
       state.carrito.splice(index, 1);
@@ -18,6 +19,16 @@ export default createStore({
     },
     toggleCarritoDialog(state) {
       state.dialog = !state.dialog;
+    },
+    incrementarCantidadProducto(state, index) {
+      state.carrito[index].cantidad++;
+    },
+    quitarCantidadProducto(state, index) {
+      if (state.carrito[index].cantidad > 1) {
+        state.carrito[index].cantidad--;
+      } else {
+        state.carrito.splice(index, 1);
+      }
     },
   },
 });

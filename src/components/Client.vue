@@ -35,7 +35,13 @@
               </p>
             </v-card-text>
 
-            <v-btn @click="agregarAlCarrito(client)" variant="outlined">
+            <v-btn
+              :loading="client.loading"
+              class="flex-grow-1"
+              height="48"
+              variant="outlined"
+              @click="agregarAlCarrito(client)"
+            >
               Añadir al carrito
             </v-btn>
           </v-row>
@@ -56,15 +62,6 @@ const avata = avatar;
 
 const store = useStore();
 
-const agregarAlCarrito = (producto) => {
-  store.commit('agregarAlCarrito', {
-    nombre: producto.title,
-    precio: producto.price,
-    imagen: producto.img,
-  });
-};
-
-
     const countdown = ref('');
     const calculateCountdown = () => {
     const endDate = new Date();
@@ -74,7 +71,7 @@ const agregarAlCarrito = (producto) => {
     const now = new Date();
     const difference = endDate - now;
 
-    const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const hours = Math.floor((difference % (1000 * 60 * 60 * 12)) / (1000 * 60 * 60));
     const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((difference % (1000 * 60)) / 1000);
 
@@ -94,27 +91,48 @@ const agregarAlCarrito = (producto) => {
 onMounted(() => {
   calculateCountdown();
 });
-const clients = [
+const clients = ref([
   {
     img: "image/9.png",
     title: "Appel Mac Book Pro",
-    price: "$ 93.358.01",
+    price: "93.358.01",
     bio: " Small plates, salads & sandwiches - an intimate setting with 12 indoor seats plus patio seating.",
+    loading: false,
   },
   {
     img: "image/10.png",
     title: "Appel Mac Book Pro",
-    price: "$ 93.358.01",
+    price: "93.358.01",
     bio: " Small plates, salads & sandwiches - an intimate setting with 12 indoor seats plus patio seating.",
+    loading: false,
   },
   {
     img: "image/11.jpg",
     title: "Appel Mac Book Pro",
-    price: "$ 93.358.01",
+    price: "93.358.01",
     bio: " Small plates, salads & sandwiches - an intimate setting with 12 indoor seats plus patio seating.",
+    loading: false,
   },
 
-]
+])
+
+const agregarAlCarrito = (producto) => {
+  producto.loading = true;
+
+  setTimeout(() => {
+    try {
+      const productoParaCarrito = {
+        nombre: producto.title,
+        precio: producto.price,
+        imagen: producto.img,
+      };
+
+      store.commit('agregarAlCarrito', productoParaCarrito);
+    } finally {
+      producto.loading = false;
+    }
+  }, 1000);
+};
 
 </script>
 

@@ -21,7 +21,13 @@
               </p>
             </v-card-text>
 
-            <v-btn @click="agregarAlCarrito(popular)" variant="outlined">
+            <v-btn
+              :loading="popular.loading"
+              class="flex-grow-1"
+              height="48"
+              variant="outlined"
+              @click="agregarAlCarrito(popular)"
+            >
               Añadir al carrito
             </v-btn>
           </v-row>
@@ -32,51 +38,62 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
 import { useStore } from 'vuex';
+import { ref } from 'vue';
 
 const store = useStore();
 
-const agregarAlCarrito = (producto) => {
-  store.commit('agregarAlCarrito', {
-    nombre: producto.title,
-    precio: producto.price,
-    imagen: producto.img,
-  });
-};
-
-
-const populars = [
+const populars = ref([
   {
     img: "popular/1.jpg",
     title: "Intercomunicador Wayxin R5",
     price: "99.8",
     bio: " Intercomunicador R5 para cascos, an intimate setting with 12 indoor seats plus patio seatin.",
-    disabled: false,
+    loading: false,
+ 
   },
   {
     img: "popular/2.png",
     title: "Appel Mac Book Pro",
     price: "99.8",
     bio: " Small plates, salads & sandwiches - an intimate setting with 12 indoor seats plus patio seating.",
-    disabled: false,
+    loading: false,
+
   },
   {
     img: "popular/3.jpg",
     title: "Mini Microfono",
     price: "99.8",
     bio: " Small plates, salads & sandwiches - an intimate setting with 12 indoor seats plus patio seating.",
-    disabled: false,
+    loading: false,
+ 
   },
   {
     img: "popular/4.png",
     title: "Reloj",
     price: "99.8",
     bio: " Small plates, salads & sandwiches - an intimate setting with 12 indoor seats plus patio seating.",
-    disabled: false,
+    loading: false,
   },
-]
+])
 
+const agregarAlCarrito = (producto) => {
+  producto.loading = true;
+
+  setTimeout(() => {
+    try {
+      const productoParaCarrito = {
+        nombre: producto.title,
+        precio: producto.price,
+        imagen: producto.img,
+      };
+
+      store.commit('agregarAlCarrito', productoParaCarrito);
+    } finally {
+      producto.loading = false; 
+    }
+  }, 1000);
+};
 </script>
 
 <style scoped>
