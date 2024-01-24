@@ -1,12 +1,12 @@
 <template>
   <v-app-bar fixed style="background-color: #080A21;">
-    <v-app-bar-title>
+    <div class="w-auto pl-3">
       <img src="@/assets/logo_light.png" alt="Logo" class="img" 
       @click="inicio"
       >
-    </v-app-bar-title>
+    </div>
 
-    <v-container class="d-flex justify-content-center">
+   <div class="w-100 d-flex justify-content-center">
       <v-btn color="white" @click="inicio">
         Inicio
       </v-btn>
@@ -39,9 +39,7 @@
       <v-btn color="white">
         Sobre nosotros
       </v-btn>
-    </v-container>
-
-    <v-spacer></v-spacer>
+    </div>
 
     <v-list-item>
       <v-btn @click="openCarritoDialog">
@@ -103,7 +101,11 @@ watch(carritoCount, () => {
 .img {
   width: 100px;
 }
-
+@media(max-width:768px){
+  .img{
+    display: none;
+  }
+}
 .btn:hover {
   color: brown;
 }
