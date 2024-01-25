@@ -56,41 +56,16 @@
 import { ref, onMounted } from 'vue';
 import { useStore } from 'vuex';
 import avatar from '../assets/avatar.png'
-
+import { useCountdown } from '@/utils/funciones.js';
+const { countdown, calculateCountdown } = useCountdown();
 
 const avata = avatar;
-
 const store = useStore();
-
-    const countdown = ref('');
-    const calculateCountdown = () => {
-    const endDate = new Date();
-    endDate.setDate(endDate.getDate() + 7);
-
-    const updateCountdown = () => {
-    const now = new Date();
-    const difference = endDate - now;
-
-    const hours = Math.floor((difference % (1000 * 60 * 60 * 12)) / (1000 * 60 * 60));
-    const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((difference % (1000 * 60)) / 1000);
-
-    countdown.value = `${hours}h ${minutes}m ${seconds}s`;
-
-    if (difference <= 0) {
-      clearInterval(interval);
-      countdown.value = 'Deal expired';
-    }
-  };
-
-  const interval = setInterval(updateCountdown, 1000);
-
-  updateCountdown();
-};
 
 onMounted(() => {
   calculateCountdown();
 });
+
 const clients = ref([
   {
     img: "image/9.png",

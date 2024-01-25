@@ -63,7 +63,7 @@
                     Agregar mas productos
                 </v-btn>
                 <v-btn text color="white" class="w-auto bg-info" :disabled="carrito.length === 0" @click="facturacion">
-                    Continuar compra
+                    Continuar con la Compra
                 </v-btn>
             </v-card-actions>
         </div>
