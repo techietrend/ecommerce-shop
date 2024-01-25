@@ -43,7 +43,7 @@
       </v-btn>
     </div>
 
-    <v-list-item>
+    <v-list-item v-if="showCartIcon">
       <v-btn @click="openCarritoDialog">
         <v-icon color="white" class="icono">mdi-cart</v-icon>
         <p class="count bg-warning" :class="{ 'fall-effect': countChanged }">
@@ -66,6 +66,12 @@ import { useStore } from 'vuex';
 
 const store = useStore();
 const router = useRouter();
+
+const isFacturacionRoute = computed(() => router.currentRoute.value.path === '/facturacion');
+
+const showCartIcon = computed(() => {
+  return !isFacturacionRoute.value;
+});
 
 const inicio = () => {
   router.push('/');

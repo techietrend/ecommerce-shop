@@ -2,7 +2,8 @@
     <v-container>
         <h2>Detalles de la Facturación</h2>
         <div class="d-flex">
-            <v-list class="w-50">
+            <v-list class="w-50" style="background-color: whitesmoke; padding: 50px; border: 1px solid #080A21; border-radius: 5px;">
+                <p class="h6">Completar Datos</p>
                 <form @submit.prevent="submit">
                     <v-text-field v-model="name.value.value" :counter="10" :error-messages="name.errorMessage.value"
                         label="Name"></v-text-field>
