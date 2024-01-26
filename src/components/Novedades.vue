@@ -78,6 +78,13 @@ const agregarAlCarrito = (novedad) => {
       price: '45.5',
       color: 'white',
     },
+    {
+      title: 'Smart Watch 3',
+      description: 'Small plates, salads & sandwiches',
+      image: image15,
+      price: '45.5',
+      color: 'white',
+    },
   ];
   </script>
   

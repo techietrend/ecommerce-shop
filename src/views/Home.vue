@@ -1,26 +1,21 @@
 <template>
   <v-app>
     <v-main style="background-color: whitesmoke;">
-      <v-container>
-        <h3>Todo lo que necesites en robótica de competencia</h3>
-        <p class="text-muted">7 años de experiencia en robótica competitiva.</p>
+      <v-container fluid>
+        <v-col cols="12" sm="12">
+          <v-sheet>
+            <v-img :src="banner" cover height="400" class="img"></v-img>
+          </v-sheet>
+        </v-col>
         <v-row>
-          <v-col cols="12" sm="12">
-             <div class="w-100 bg-red" elevation-10>
-              <v-carousel>
-                <v-carousel-item v-for="(item, i) in items" :key="i" :src="item.src" cover>
-                </v-carousel-item>
-              </v-carousel>
-            </div>
-          </v-col>
           <v-toolbar color="transparent">
-            <v-toolbar-title>Popular Products</v-toolbar-title>
+            <v-toolbar-title>Productos Populares</v-toolbar-title>
           </v-toolbar>
           <v-col cols="12" sm="12" class="mt-n10">
             <Popular />
           </v-col>
           <v-toolbar color="transparent" class="mt-n10">
-            <v-toolbar-title>Featured Products</v-toolbar-title>
+            <v-toolbar-title>Productos destacados</v-toolbar-title>
           </v-toolbar>
           <v-col cols="12" sm="12" class="mt-n10">
             <Featured />
@@ -36,6 +31,12 @@
           </v-col>
         </v-row>
       </v-container>
+        <v-col cols="12" sm="12">
+          <v-carousel>
+            <v-carousel-item v-for="(item, i) in items" :key="i" :src="item.src" cover>
+            </v-carousel-item>
+          </v-carousel>
+        </v-col>
     </v-main>
   </v-app>
 </template>
@@ -45,7 +46,12 @@ import Popular from "@/components/Popular.vue";
 import Featured from "@/components/Featured.vue";
 import Client from "@/components/Client.vue";
 import NovedadesVue from "@/components/Novedades.vue";
-import router from "@/router";
+import bannerImg from '../assets/banner.png'
+import gamer from '../assets/gamer.png'
+import black from '../assets/blackMouse.png'
+import auris from '../assets/auris.png'
+
+const banner = bannerImg;
 
 const items = [
   {
@@ -64,7 +70,14 @@ const items = [
     text: "Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée à titre provisoire pour calibrer une mise en page, le texte définitif venant remplacer le faux-texte dès ",
   },
 ]
-
 </script>
 
-<style scoped></style>
+<style scoped>
+
+@media(max-width:768px){
+  .img{
+    width: auto;
+    size: cover;
+  }
+}
+</style>

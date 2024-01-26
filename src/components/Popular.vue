@@ -6,7 +6,7 @@
               elevation="3"
               >
               <v-icon class="icono-vista" @click="mostrarDetalle(popular)">mdi-eye</v-icon>
-        <v-img height="230"
+          <v-img height="230"
                width="230" 
                class="mx-auto img"  
                :src="popular.img"
@@ -77,7 +77,7 @@ const populars = ref([
     img: "popular/1.jpg",
     title: "Wayxin R5",
     price: "99.8",
-    bio: " Intercomunicador R5 para cascos, an intimate setting with 12 indoor seats plus patio seatin.",
+    bio: " Intercomunicador R5 para cascos, auriculares con Radio FM. Asistente de voz inteligente, rápido doble clic en el botón del teléfono para iniciar el asistente de voz del teléfono (conectado al estado del teléfono), para lograr la interacción con el teléfono, IPX6 nivel impermeable, sin miedo a la lluvia, valiente para seguir adelante",
     loading: false,
  
   },

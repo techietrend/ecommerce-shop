@@ -1,31 +1,38 @@
 <template>
-    <v-card>
-        <v-card-title class="headline h1">
-            Detalles de {{ producto.title }}
-        </v-card-title>
-        <v-card-subtitle class="text-dark h2">
-            {{ producto.bio }}
-        </v-card-subtitle>
-        <v-card-text>
-            <v-img :src="producto.img" alt="Producto" max-height="300"></v-img>
-            <v-row justify="end">
-                <v-col>
-                    <v-chip color="primary" dark>
+    <v-card class="p-2">
+        <v-row>
+            <v-col cols="12" md="6">
+                <v-carousel>
+                    <v-carousel-item v-for="(image, index) in imagenes" :key="index">
+                        <v-img :src="image" alt="Producto" max-height="300"></v-img>
+                    </v-carousel-item>
+                </v-carousel>
+            </v-col>
+            <v-col cols="12" md="6">
+                <v-card class="d-flex flex-column bg-grey-lighten-5 mb-3 p-5 h-100">
+                    <v-card-title>
+                        Descripcion de {{ producto.title }}
+                    </v-card-title>
+                    <v-sheet>
+                        {{ producto.bio }}
+                    </v-sheet>
+                    <v-chip color="primary" dark class="d-flex justify-content-center">
                         $USD {{ producto.price }}
                     </v-chip>
-                </v-col>
-            </v-row>
-        </v-card-text>
+                </v-card>
+            </v-col>
+        </v-row>
     </v-card>
 </template>
   
 <script setup>
+import { ref } from 'vue';
+const props = defineProps(['producto']);
 
-const props = defineProps(['producto', 'agregarAlCarrito', 'dialogVisible']);
 
+
+const imagenes = ref([props.producto.img])
 </script>
   
-<style scoped>
-/* Estilos específicos del componente si es necesario */
-</style>
+<style scoped></style>
   
