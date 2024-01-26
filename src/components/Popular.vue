@@ -1,9 +1,17 @@
 <template>
   <v-row>
     <v-col v-for="(popular, i) in populars" :key="i" cols="12" sm="6" md="4" lg="3">
-      <v-card class="mx-auto my-12 pb-4" max-width="374" elevation="3">
-        <v-img height="250" class="mx-4 img" :src="popular.img"></v-img>
-
+      <v-card class="mx-auto my-12 pb-4 pt-4" 
+              max-width="374" 
+              elevation="3"
+              >
+        <v-img height="230"
+               width="230" 
+               class="mx-auto img"  
+               :src="popular.img"
+               @click="mostrarDetalle(popular)"
+               >
+          </v-img>
         <v-card-item class="mt-n4">
           <v-card-title class="text-center">
             {{ popular.title }}
@@ -11,27 +19,38 @@
         </v-card-item>
 
         <v-card-text>
-          <div class="text-center">
+          <!-- <div class="text-center">
             {{ popular.bio }}
-          </div>
+          </div> -->
           <v-row align="center" class="mx-0 mt-2 d-flex justify-content-center">
             <v-card-text class="d-flex justify-content-center">
-              <p class="font-weight-medium">
+              <p class="font-weight-medium h5">
                 $USD {{ popular.price }}
               </p>
             </v-card-text>
 
             <v-btn
               :loading="popular.loading"
-              class="flex-grow-1"
-              height="48"
+              class="w-100"
+              height="30"
               variant="outlined"
               @click="agregarAlCarrito(popular)"
             >
               Añadir al carrito
             </v-btn>
+            <v-btn
+              class="flex-grow-1 mt-4 text-white w-100"
+              style="background-color: #080A21;"
+              height="48"
+              variant="outlined"            
+            >
+              Comprar
+            </v-btn>
           </v-row>
         </v-card-text>
+        <v-dialog v-model="dialogVisible">
+          <DetailProduct :producto="productoSeleccionado" />
+        </v-dialog>
       </v-card>
     </v-col>
   </v-row>
@@ -40,13 +59,26 @@
 <script setup>
 import { useStore } from 'vuex';
 import { ref } from 'vue';
+import { useRouter } from 'vue-router';
+import DetailProduct from '@/components/DetailProduct.vue'
+
 
 const store = useStore();
+
+
+const dialogVisible = ref(false);
+const productoSeleccionado = ref(null);
+
+const mostrarDetalle = (producto) => {
+  productoSeleccionado.value = { ...producto };
+  dialogVisible.value = true;
+};
+
 
 const populars = ref([
   {
     img: "popular/1.jpg",
-    title: "Intercomunicador Wayxin R5",
+    title: "Wayxin R5",
     price: "99.8",
     bio: " Intercomunicador R5 para cascos, an intimate setting with 12 indoor seats plus patio seatin.",
     loading: false,
@@ -94,7 +126,12 @@ const agregarAlCarrito = (producto) => {
     }
   }, 1000);
 };
+
 </script>
 
 <style scoped>
+
+.img{
+  cursor: pointer;
+}
 </style>
