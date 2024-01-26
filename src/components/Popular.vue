@@ -5,11 +5,11 @@
               max-width="374" 
               elevation="3"
               >
+              <v-icon class="icono-vista" @click="mostrarDetalle(popular)">mdi-eye</v-icon>
         <v-img height="230"
                width="230" 
                class="mx-auto img"  
                :src="popular.img"
-               @click="mostrarDetalle(popular)"
                >
           </v-img>
         <v-card-item class="mt-n4">
@@ -19,9 +19,6 @@
         </v-card-item>
 
         <v-card-text>
-          <!-- <div class="text-center">
-            {{ popular.bio }}
-          </div> -->
           <v-row align="center" class="mx-0 mt-2 d-flex justify-content-center">
             <v-card-text class="d-flex justify-content-center">
               <p class="font-weight-medium h5">
@@ -31,7 +28,7 @@
 
             <v-btn
               :loading="popular.loading"
-              class="w-100"
+              class="w-100 bg-primary"
               height="30"
               variant="outlined"
               @click="agregarAlCarrito(popular)"
@@ -59,7 +56,6 @@
 <script setup>
 import { useStore } from 'vuex';
 import { ref } from 'vue';
-import { useRouter } from 'vue-router';
 import DetailProduct from '@/components/DetailProduct.vue'
 
 
@@ -73,6 +69,7 @@ const mostrarDetalle = (producto) => {
   productoSeleccionado.value = { ...producto };
   dialogVisible.value = true;
 };
+
 
 
 const populars = ref([
@@ -134,4 +131,15 @@ const agregarAlCarrito = (producto) => {
 .img{
   cursor: pointer;
 }
+
+.icono-vista {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  z-index: 1;
+}
+.icono-vista:hover {
+  color: #FFC107; 
+  }
 </style>
