@@ -11,24 +11,29 @@ const routes = [
         component: () => import('@/views/Home.vue'),
       },
       {
-        path:'/bicicleta',
-        name:'Bicicleta',
-        component: () => import('@/views/Bicicleta.vue')
+        path: '/bicicleta',
+        name: 'Bicicleta',
+        component: () => import('@/views/Bicicleta.vue'),
       },
       {
-        path:'/componentes-pc',
-        name:'ComponentesPc',
-        component: () => import('@/views/ComponentesPc.vue')
+        path: '/componentes-pc',
+        name: 'ComponentesPc',
+        component: () => import('@/views/ComponentesPc.vue'),
       },
       {
-        path:'/impresora-3d',
-        name:'Impresoras3D',
-        component: () => import('@/views/Impresoras3D.vue')
+        path: '/impresora-3d',
+        name: 'Impresoras3D',
+        component: () => import('@/views/Impresoras3D.vue'),
       },
       {
-        path:'/facturacion',
-        name:'Facturacion',
+        path: '/facturacion',
+        name: 'Facturacion',
         component: () => import('@/views/Facturacion.vue'),
+      },
+      {
+        path: "/:pathMatch(.*)*",
+        name: "not-found",
+        component: () => import('@/components/NotFound.vue'),
       },
     ],
   },

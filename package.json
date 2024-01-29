@@ -29,5 +29,12 @@
     "vite": "^4.2.0",
     "vite-plugin-vue-images": "^0.6.1",
     "vite-plugin-vuetify": "^1.0.0"
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true,
+    "trailingComma": "es5",
+    "printWidth": 65,
+    "tabWidth": 3
   }
 }

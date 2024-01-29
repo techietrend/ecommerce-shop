@@ -1,9 +1,10 @@
 .img {
     width: 100px;
+    cursor: pointer;
   }
   @media(max-width:768px){
     .img{
-      display: none;
+      width: 50px;
     }
   }
   .btn:hover {
