@@ -1,10 +1,20 @@
 <template>
     <v-card class="p-2">
         <v-row>
-            <v-col cols="12" md="6">
+            <v-col 
+                   cols="12" 
+                   md="6"
+                   >
                 <v-carousel>
-                    <v-carousel-item v-for="(image, index) in imagenes" :key="index">
-                        <v-img :src="image" alt="Producto" max-height="300"></v-img>
+                    <v-carousel-item 
+                            v-for="(image, index) in imagenes" 
+                            :key="index">
+                        <v-img 
+                              :src="image" 
+                               alt="Producto" 
+                               max-height="300"
+                               >
+                         </v-img>
                     </v-carousel-item>
                 </v-carousel>
             </v-col>
@@ -16,7 +26,9 @@
                     <v-sheet>
                         {{ producto.bio }}
                     </v-sheet>
-                    <v-chip color="primary" dark class="d-flex justify-content-center">
+                    <v-chip color="primary" 
+                            dark 
+                            class="d-flex justify-content-center">
                         $USD {{ producto.price }}
                     </v-chip>
                 </v-card>

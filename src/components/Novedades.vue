@@ -1,12 +1,18 @@
 <template>
     <v-row>
-      <v-card v-for="(novedad , index) in novedad" :key="index" 
+      <v-card v-for="(novedad , index) in novedad" 
+             :key="index" 
              class="mx-auto my-12 pb-4" 
              min-width="374" 
-             elevation="3" 
-             :color="novedad.color">
+             elevation="10" 
+             :color="novedad.color"
+             @click="agregarAlCarrito(novedad)"
+             >
         <v-row>
-          <v-col cols="12" sm="6">
+          <v-col 
+                cols="12" 
+                sm="6"
+                >
             <v-card-item class="mt-10">
               <v-card-title class="text-center">
                 {{ novedad.title }}
@@ -24,6 +30,7 @@
                  </v-card-text>
                   <v-btn 
                        color="black"
+                       class="w-100"
                        @click="agregarAlCarrito(novedad)"
                         >
                        Agregar

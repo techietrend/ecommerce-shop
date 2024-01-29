@@ -1,7 +1,7 @@
 <template>
   <v-row>
     <v-col v-for="(popular, i) in populars" :key="i" cols="12" sm="6" md="4" lg="3">
-      <v-card
+       <v-card
               class="mx-auto my-12 pb-4 pt-4"
               max-width="374"
               elevation="3"

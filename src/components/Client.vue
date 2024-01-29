@@ -15,7 +15,9 @@
             max-height="200px">
       </v-img>
         <v-card-item >
-          <v-card-title class="text-center">Ofertas del dia</v-card-title>
+          <v-card-title class="text-center">
+             Ofertas del dia
+           </v-card-title>
         </v-card-item>
 
         <v-card-text>
@@ -32,19 +34,23 @@
          md="3" 
          v-for="(client, i) in clients" :key="i"
          >
-      <v-card class="mx-auto my-12 pb-4" max-width="374">
+      <v-card 
+              class="mx-auto my-12 p-2" 
+              max-width="374"
+              >
         <v-img 
-             height="250" 
-             class="mx-4" 
+             height="200" 
+             class="mx-4"
+             elevation-10 
              :src="client.img"
              >
-          </v-img>
+         </v-img>
 
         <v-card-item class="mt-n4">
-          <v-card-title class="text-center">{{ client.title }}</v-card-title>
+          <v-card-title class="text-center">
+               {{ client.title }}
+           </v-card-title>
         </v-card-item>
-
-      
         <v-card-text>
           <div class="text-center">
             {{ client.bio }}
@@ -131,7 +137,3 @@ const agregarAlCarrito = (producto) => {
 };
 
 </script>
-
-<style>
-
-</style>

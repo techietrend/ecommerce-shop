@@ -1,8 +1,23 @@
 <template>
   <v-row>
-    <v-col v-for="(feature, i) in featured" :key="i" cols="12" sm="6" md="4" lg="3">
-      <v-card class="mx-auto my-12 pb-4" max-width="374" elevation="3">
-        <v-img height="250" class="mx-4" :src="feature.img"></v-img>
+    <v-col v-for="(feature, i) in featured" 
+          :key="i" 
+           cols="12" 
+           sm="6" 
+           md="4" 
+           lg="3"
+           >
+      <v-card 
+            class="mx-auto my-12 pb-4" 
+            max-width="374" 
+            elevation="3"
+            >
+        <v-img 
+              height="250" 
+              class="mx-4" 
+              :src="feature.img"
+              >
+         </v-img>
 
         <v-card-item class="mt-n4">
           <v-card-title class="text-center">{{ feature.title }}</v-card-title>
