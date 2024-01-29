@@ -8,30 +8,36 @@
         <v-row>
           <v-col cols="12" sm="6">
             <v-card-item class="mt-10">
-              <v-card-title class="text-center">{{ novedad.title }}</v-card-title>
+              <v-card-title class="text-center">
+                {{ novedad.title }}
+              </v-card-title>
             </v-card-item>
-  
             <v-card-text>
               <div class="text-center">
                 {{ novedad.description }}
               </div>
               <div class="text-center mt-4">
-                <v-card-text class="d-flex justify-content-center">
+                 <v-card-text class="d-flex justify-content-center">
                     <p class="font-weight-medium">
                       $USD {{ novedad.price }}
                     </p>
-              </v-card-text>
-              <v-btn 
-                    color="black"
-                    @click="agregarAlCarrito(novedad)"
-                    >
-                    Agregar
+                 </v-card-text>
+                  <v-btn 
+                       color="black"
+                       @click="agregarAlCarrito(novedad)"
+                        >
+                       Agregar
                 </v-btn>
               </div>
             </v-card-text>
           </v-col>
           <v-col cols="12" sm="6">
-            <v-img height="250" class="mx-4" :src="novedad.image"></v-img>
+            <v-img 
+                 height="250" 
+                 class="mx-4" 
+                 :src="novedad.image"
+                 >
+              </v-img>
           </v-col>
         </v-row>
       </v-card>
@@ -70,13 +76,6 @@ const agregarAlCarrito = (novedad) => {
       image: image14,
       price: '45.5',
       color: 'red', 
-    },
-    {
-      title: 'Smart Watch 3',
-      description: 'Small plates, salads & sandwiches',
-      image: image15,
-      price: '45.5',
-      color: 'white',
     },
     {
       title: 'Smart Watch 3',

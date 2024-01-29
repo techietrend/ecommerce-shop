@@ -1,8 +1,19 @@
 <template>
   <v-row style="background-color: #080A21;">
-    <v-col cols="12" sm="6" md="3">
-      <v-card class="mx-auto my-12 pb-4" max-width="374" flat color="#080A21" elevation="10">
-     <v-img :src="avata" max-height="200px"></v-img>
+    <v-col cols="12" 
+           sm="6" 
+           md="3">
+      <v-card 
+            class="mx-auto my-12 pb-4" 
+            max-width="374" 
+            flat 
+            color="#080A21" 
+            elevation="10"
+            >
+     <v-img 
+           :src="avata" 
+            max-height="200px">
+      </v-img>
         <v-card-item >
           <v-card-title class="text-center">Ofertas del dia</v-card-title>
         </v-card-item>
@@ -15,9 +26,19 @@
       </v-card>
     </v-col>
 
-    <v-col cols="12" sm="6" md="3" v-for="(client, i) in clients" :key="i">
+    <v-col 
+         cols="12" 
+         sm="6" 
+         md="3" 
+         v-for="(client, i) in clients" :key="i"
+         >
       <v-card class="mx-auto my-12 pb-4" max-width="374">
-        <v-img height="250" class="mx-4" :src="client.img"></v-img>
+        <v-img 
+             height="250" 
+             class="mx-4" 
+             :src="client.img"
+             >
+          </v-img>
 
         <v-card-item class="mt-n4">
           <v-card-title class="text-center">{{ client.title }}</v-card-title>
@@ -112,7 +133,5 @@ const agregarAlCarrito = (producto) => {
 </script>
 
 <style>
-.top-day {
-  margin-top: 120px;
-}
+
 </style>
