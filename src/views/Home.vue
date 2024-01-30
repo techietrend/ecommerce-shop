@@ -1,8 +1,11 @@
 <template>
    <v-container fluid style="background-color: #e3e6e6">
       <v-row>
-         <v-sheet class="w-100 bg-primary text-white">
-            <v-toolbar class="bg-transparent">
+         <v-sheet class="w-100">
+            <v-toolbar
+               class="text-white"
+               style="background-color: #007185"
+            >
                <v-toolbar-title>
                   Todo lo que necesites en robótica de
                   competencia
@@ -10,6 +13,14 @@
             </v-toolbar>
             <v-col cols="12" sm="12">
                <Section />
+            </v-col>
+            <v-col
+               cols="12"
+               sm="12"
+               style="background-color: #232f3e"
+            >
+               <p class="text-white h5">Descubre la variedad de productos</p>
+               <Carousell />
             </v-col>
          </v-sheet>
          <v-toolbar color="transparent">
@@ -59,6 +70,8 @@ import Client from '@/components/Client.vue'
 import NovedadesVue from '@/components/Novedades.vue'
 import Section from '@/components/Section.vue'
 import bannerImg from '../assets/banner.png'
+import Carousell from '@/components/CarouselItems.vue'
+
 const banner = bannerImg
 
 const items = [

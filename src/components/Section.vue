@@ -8,6 +8,7 @@
          md="4"
          lg="3"
          class="p-3"
+         style="background-color: #007185;"
       >
          <v-card
             max-width="374"
