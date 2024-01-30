@@ -1,17 +1,17 @@
 <template>
    <v-container fluid style="background-color: #e3e6e6">
       <v-row>
-         <v-col cols="12" sm="12" class="bg-blue rounded">
+         <v-sheet class="w-100 bg-primary text-white">
             <v-toolbar class="bg-transparent">
                <v-toolbar-title>
-                  <h5>
-                     Todo lo que necesites en robótica de
-                     competencia
-                  </h5>
+                  Todo lo que necesites en robótica de
+                  competencia
                </v-toolbar-title>
             </v-toolbar>
-            <Section />
-         </v-col>
+            <v-col cols="12" sm="12">
+               <Section />
+            </v-col>
+         </v-sheet>
          <v-toolbar color="transparent">
             <v-toolbar-title>
                Productos Populares
@@ -25,7 +25,7 @@
                Productos destacados
             </v-toolbar-title>
          </v-toolbar>
-         <v-col cols="12" sm="12" class="mt-n10">
+         <v-col cols="12" sm="12" class="mt-n10" id="destacados">
             <Featured />
          </v-col>
          <v-col cols="12" sm="12" class="mt-n10">

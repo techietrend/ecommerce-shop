@@ -7,7 +7,7 @@
          sm="6"
          md="4"
          lg="3"
-         class="bg-blue p-3 rounded-shaped"
+         class="p-3"
       >
          <v-card
             max-width="374"
@@ -39,7 +39,7 @@ const items = [
    { imageSrc: mouse, title: 'Productos Destacados' },
    { imageSrc: auriculares, title: 'Lo Más Vendido' },
    { imageSrc: gamer, title: 'Semana de Descuentos' },
-   { imageSrc: gamer, title: 'Semana de Descuentos' },
+   { imageSrc: mouse, title: 'Semana de Descuentos' },
 ]
 </script>
 

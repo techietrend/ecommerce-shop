@@ -12,3 +12,4 @@ registerPlugins(app)
 app.use(store) // Usa tu tienda Vuex
 
 app.mount('#app')
+

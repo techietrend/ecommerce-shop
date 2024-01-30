@@ -6,8 +6,9 @@
             variant="tonal"
             class="ma-2"
             v-bind="props"
-            >open</v-btn
          >
+            open
+         </v-btn>
       </template>
 
       Se agrego al carrito <strong>tonal</strong> variant.

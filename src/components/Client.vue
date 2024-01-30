@@ -45,7 +45,7 @@
          :key="i"
       >
          <v-card
-            class="mx-auto my-12 rounded"
+            class="mx-auto my-12 p-2 rounded"
             max-width="324"
             elevation-10
          >
@@ -55,7 +55,12 @@
             >
                mdi-eye
             </v-icon>
-            <v-img height="150" class="mx-4" :src="client.img">
+            <v-img 
+                  height="150" 
+                  class="mx-4 img" 
+                  :src="client.img"
+                  @click="mostrarDetalle(client)"
+                  >
             </v-img>
 
             <v-card-item class="mt-n4">

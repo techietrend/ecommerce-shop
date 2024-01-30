@@ -4,7 +4,7 @@
          v-for="(novedad, index) in novedad"
          :key="index"
          class="mx-auto mt-10 mb-10 p-2"
-          width="450"
+         width="450"
          elevation="10"
          :color="novedad.color"
          @click="agregarAlCarrito(novedad)"
@@ -94,5 +94,4 @@ const novedad = [
 </script>
 
 <style scoped>
-/* Puedes agregar estilos específicos si es necesario */
 </style>
