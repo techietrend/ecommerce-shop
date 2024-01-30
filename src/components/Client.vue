@@ -1,139 +1,134 @@
 <template>
-  <v-row style="background-color: #080A21;">
-    <v-col cols="12" 
-           sm="6" 
-           md="3">
-      <v-card 
-            class="mx-auto my-12 pb-4" 
-            max-width="374" 
-            flat 
-            color="#080A21" 
+   <v-row style="background-color: #080a21">
+      <v-col cols="12" sm="6" md="3">
+         <v-card
+            class="mx-auto my-12 pb-4"
+            max-width="374"
+            flat
+            color="#080A21"
             elevation="10"
-            >
-     <v-img 
-           :src="avata" 
-            max-height="200px">
-      </v-img>
-        <v-card-item >
-          <v-card-title class="text-center">
-             Ofertas del dia
-           </v-card-title>
-        </v-card-item>
-
-        <v-card-text>
-          <div class="text-center">
-            <h1>{{ countdown }}</h1>
-          </div>
-        </v-card-text>
-      </v-card>
-    </v-col>
-
-    <v-col 
-         cols="12" 
-         sm="6" 
-         md="3" 
-         v-for="(client, i) in clients" :key="i"
          >
-      <v-card 
-              class="mx-auto my-12 p-2" 
-              max-width="374"
-              >
-        <v-img 
-             height="200" 
-             class="mx-4"
-             elevation-10 
-             :src="client.img"
-             >
-         </v-img>
+            <v-img :src="avata" max-height="200px"> </v-img>
+            <v-card-item>
+               <v-card-title class="text-center">
+                  Ofertas del dia
+               </v-card-title>
+            </v-card-item>
 
-        <v-card-item class="mt-n4">
-          <v-card-title class="text-center">
-               {{ client.title }}
-           </v-card-title>
-        </v-card-item>
-        <v-card-text>
-          <div class="text-center">
-            {{ client.bio }}
-          </div>
-          <v-row align="center" class="mx-0 mt-2 d-flex justify-content-center">
-            <v-card-text class="d-flex justify-content-center">
-              <p class="font-weight-medium">
-                $USD {{ client.price }}
-              </p>
+            <v-card-text>
+               <div class="text-center">
+                  <h1>{{ countdown }}</h1>
+               </div>
             </v-card-text>
+         </v-card>
+      </v-col>
 
-            <v-btn
-              :loading="client.loading"
-              class="flex-grow-1"
-              height="48"
-              variant="outlined"
-              @click="agregarAlCarrito(client)"
+      <v-col
+         cols="12"
+         sm="6"
+         md="3"
+         v-for="(client, i) in clients"
+         :key="i"
+      >
+         <v-card class="mx-auto my-12 p-2" max-width="374">
+            <v-img
+               height="200"
+               class="mx-4"
+               elevation-10
+               :src="client.img"
             >
-              Añadir al carrito
-            </v-btn>
-          </v-row>
-        </v-card-text>
-      </v-card>
-    </v-col>
-  </v-row>
+            </v-img>
+
+            <v-card-item class="mt-n4">
+               <v-card-title class="text-center">
+                  {{ client.title }}
+               </v-card-title>
+            </v-card-item>
+            <v-card-text>
+               <div class="text-center">
+                  {{ client.bio }}
+               </div>
+               <v-row
+                  align="center"
+                  class="mx-0 mt-2 d-flex justify-content-center"
+               >
+                  <v-card-text
+                     class="d-flex justify-content-center"
+                  >
+                     <p class="font-weight-medium">
+                        $USD {{ client.price }}
+                     </p>
+                  </v-card-text>
+
+                  <v-btn
+                     :loading="client.loading"
+                     class="flex-grow-1"
+                     height="48"
+                     variant="outlined"
+                     @click="agregarAlCarrito(client)"
+                  >
+                     Añadir al carrito
+                  </v-btn>
+               </v-row>
+            </v-card-text>
+         </v-card>
+      </v-col>
+   </v-row>
 </template>
 
-
 <script setup>
-import { ref, onMounted } from 'vue';
-import { useStore } from 'vuex';
+import { ref, onMounted } from 'vue'
+import { useStore } from 'vuex'
 import avatar from '../assets/avatar.png'
-import { useCountdown } from '@/utils/funciones.js';
-const { countdown, calculateCountdown } = useCountdown();
+import { useCountdown } from '@/utils/funciones.js'
+const { countdown, calculateCountdown } = useCountdown()
 
-const avata = avatar;
-const store = useStore();
+const avata = avatar
+const store = useStore()
 
 onMounted(() => {
-  calculateCountdown();
-});
+   calculateCountdown()
+})
 
 const clients = ref([
-  {
-    img: "image/9.png",
-    title: "Appel Mac Book Pro",
-    price: "93.358.01",
-    bio: " Small plates, salads & sandwiches - an intimate setting with 12 indoor seats plus patio seating.",
-    loading: false,
-  },
-  {
-    img: "image/10.png",
-    title: "Appel Mac Book Pro",
-    price: "93.358.01",
-    bio: " Small plates, salads & sandwiches - an intimate setting with 12 indoor seats plus patio seating.",
-    loading: false,
-  },
-  {
-    img: "image/11.jpg",
-    title: "Appel Mac Book Pro",
-    price: "93.358.01",
-    bio: " Small plates, salads & sandwiches - an intimate setting with 12 indoor seats plus patio seating.",
-    loading: false,
-  },
-
+   {
+      img: 'image/9.png',
+      title: 'Appel Mac Book Pro',
+      price: '93.358.01',
+      bio: ' Small plates, salads & sandwiches - an intimate setting with 12 indoor seats plus patio seating.',
+      loading: false,
+   },
+   {
+      img: 'image/10.png',
+      title: 'Appel Mac Book Pro',
+      price: '93.358.01',
+      bio: ' Small plates, salads & sandwiches - an intimate setting with 12 indoor seats plus patio seating.',
+      loading: false,
+   },
+   {
+      img: 'image/11.jpg',
+      title: 'Appel Mac Book Pro',
+      price: '93.358.01',
+      bio: ' Small plates, salads & sandwiches - an intimate setting with 12 indoor seats plus patio seating.',
+      loading: false,
+   },
 ])
 
 const agregarAlCarrito = (producto) => {
-  producto.loading = true;
+   producto.loading = true
 
-  setTimeout(() => {
-    try {
-      const productoParaCarrito = {
-        nombre: producto.title,
-        precio: producto.price,
-        imagen: producto.img,
-      };
+   setTimeout(() => {
+      try {
+         const productoParaCarrito = {
+            nombre: producto.title,
+            precio: producto.price,
+            imagen: producto.img,
+         }
 
-      store.commit('agregarAlCarrito', productoParaCarrito);
-    } finally {
-      producto.loading = false;
-    }
-  }, 1000);
-};
-
+         store.commit('agregarAlCarrito', productoParaCarrito)
+      } finally {
+         producto.loading = false
+      }
+   }, 1000)
+}
 </script>

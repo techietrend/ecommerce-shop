@@ -1,12 +1,9 @@
 <template>
-  <div>
-    <h1>
-      Componentes Pc
-    </h1>
-  </div>
+   <div>
+      <h1>Componentes Pc</h1>
+   </div>
 </template>
 
-<script setup>
-</script>
+<script setup></script>
 
 <style scoped></style>
