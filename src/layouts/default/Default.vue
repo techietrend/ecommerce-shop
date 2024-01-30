@@ -1,7 +1,7 @@
 <template>
    <v-app>
-      <default-bar />
       <Whastapp />
+      <default-bar />
       <default-view />
       <FooterVue />
    </v-app>

@@ -1,12 +1,11 @@
 <template>
    <div class="d-flex flex-column">
-      <!-- FOOTER -->
       <footer
          class="w-100 py-4 flex-shrink-0"
          style="background-color: #080a21"
       >
          <div class="container py-4">
-            <div class="row gy-4 gx-5">
+            <div class="row gy-4">
                <div class="col-lg-3 col-md-6">
                   <img :src="logo" alt="Logo" class="img" />
                   <p class="small text-white">

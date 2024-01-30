@@ -4,7 +4,7 @@
 }
 @media (max-width: 768px) {
    .img {
-      width: 50px;
+      width: 60px;
    }
 }
 .btn:hover {
@@ -42,4 +42,8 @@
    100% {
       transform: translateY(50px);
    }
+}
+
+.app{
+   min-width: 100%;
 }

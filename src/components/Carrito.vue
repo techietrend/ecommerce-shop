@@ -1,11 +1,11 @@
 <template>
    <v-card>
       <div class="d-flex bg-dark">
-         <v-card-title class="text-white"
-            >Contenido del Carrito
+         <v-card-title class="text-white">
+            Contenido del Carrito
          </v-card-title>
          <v-icon
-            class="ml-auto mt-4 pr-5"
+            class="ml-auto mt-4"
             color="white"
             @click="cerrarCarritoDialog"
          >
@@ -13,7 +13,7 @@
          </v-icon>
       </div>
       <v-list>
-         <v-list-item-group v-if="carrito.length > 0">
+         <v-list-item v-if="carrito.length > 0">
             <v-list-item
                v-for="(product, index) in carrito"
                :key="index"
@@ -35,16 +35,16 @@
                         icon
                         @click="incrementarCantidad(index)"
                      >
-                        <v-icon size="small" color="primary"
-                           >mdi-plus</v-icon
-                        >
+                        <v-icon size="small" color="primary">
+                           mdi-plus
+                        </v-icon>
                      </v-btn>
                   </div>
                   <div>
                      <v-list-item-title class="text-muted"
                         >Cantidad x
-                        {{ product.cantidad }}</v-list-item-title
-                     >
+                        {{ product.cantidad }}
+                     </v-list-item-title>
                   </div>
                   <div>
                      <v-list-item-title>
@@ -57,34 +57,35 @@
                      </v-list-item-title>
                   </div>
                   <v-list-item-action>
-                     <v-list-item-subtitle
-                        >Eliminar producto</v-list-item-subtitle
-                     >
+                     <v-list-item-subtitle>
+                        Eliminar producto
+                     </v-list-item-subtitle>
                      <span>&#160;&#160;</span>
                      <v-btn
                         icon
                         @click="removeFromCarrito(index)"
                      >
-                        <v-icon size="small" color="red"
-                           >mdi-delete</v-icon
-                        >
+                        <v-icon size="small" color="red">
+                           mdi-delete
+                        </v-icon>
                      </v-btn>
                   </v-list-item-action>
                </div>
             </v-list-item>
-         </v-list-item-group>
+         </v-list-item>
          <v-list-item v-else>
-            <v-list-item-subtitle
-               >No hay productos en el
-               carrito</v-list-item-subtitle
-            >
+            <v-list-item-subtitle>
+               No hay productos en el carrito
+            </v-list-item-subtitle>
          </v-list-item>
       </v-list>
 
       <v-divider></v-divider>
       <div class="bg-dark text-white">
          <v-card-actions class="justify-end">
-            <v-btn text> Subtotal: Usd$ {{ subtotal }} </v-btn>
+            <v-btn text> 
+               Subtotal: Usd$ {{ subtotal }} 
+            </v-btn>
          </v-card-actions>
 
          <v-card-actions class="d-flex justify-lg-space-around">

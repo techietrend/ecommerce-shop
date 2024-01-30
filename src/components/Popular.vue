@@ -11,13 +11,14 @@
          <v-card
             class="mx-auto my-12 pb-4 pt-4"
             max-width="374"
-            elevation="3"
+            elevation="10"
          >
             <v-icon
                class="icono-vista"
                @click="mostrarDetalle(popular)"
-               >mdi-eye</v-icon
             >
+               mdi-eye
+            </v-icon>
             <v-img
                height="230"
                width="230"
@@ -38,19 +39,35 @@
                   <v-card-text
                      class="d-flex justify-content-center"
                   >
-                     <p class="font-weight-medium h5">
+                     <v-chip
+                        color="primary"
+                        dark
+                        class="d-flex justify-content-center"
+                     >
                         $USD {{ popular.price }}
-                     </p>
+                     </v-chip>
                   </v-card-text>
-                  <v-btn
-                     :loading="popular.loading"
-                     class="w-100 bg-primary"
-                     height="30"
-                     variant="outlined"
-                     @click="agregarAlCarrito(popular)"
+                  <v-snackbar
+                     :timeout="2000"
+                     color="deep-purple-accent-4"
+                     elevation="24"
                   >
-                     Añadir al carrito
-                  </v-btn>
+                     <template v-slot:activator="{ props }">
+                        <v-btn
+                           :loading="popular.loading"
+                           class="w-100 bg-primary"
+                           height="30"
+                           variant="outlined"
+                           v-bind="props"
+                           @click="agregarAlCarrito(popular)"
+                        >
+                           Añadir al carrito
+                        </v-btn>
+                     </template>
+
+                     Se ha añadido con éxito un nuevo producto al
+                     carrito
+                  </v-snackbar>
                   <v-btn
                      class="flex-grow-1 mt-4 text-white w-100"
                      style="background-color: #080a21"
@@ -147,6 +164,6 @@ const agregarAlCarrito = (producto) => {
    z-index: 1;
 }
 .icono-vista:hover {
-   color: #ffc107;
+   color: #adeec7;
 }
 </style>

@@ -3,8 +3,8 @@
       <v-card
          v-for="(novedad, index) in novedad"
          :key="index"
-         class="mx-auto my-12 pb-4"
-         min-width="374"
+         class="mx-auto mt-10 mb-10 p-2"
+          width="450"
          elevation="10"
          :color="novedad.color"
          @click="agregarAlCarrito(novedad)"
@@ -40,7 +40,7 @@
             </v-col>
             <v-col cols="12" sm="6">
                <v-img
-                  height="250"
+                  height="210"
                   class="mx-4"
                   :src="novedad.image"
                >
@@ -93,4 +93,6 @@ const novedad = [
 ]
 </script>
 
-<style scoped></style>
+<style scoped>
+/* Puedes agregar estilos específicos si es necesario */
+</style>

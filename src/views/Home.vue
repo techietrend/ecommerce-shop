@@ -1,63 +1,55 @@
 <template>
-   <v-app>
-      <v-main style="background-color: whitesmoke">
-         <v-container fluid>
-            <v-row>
-               <v-col
-                  cols="12"
-                  sm="12"
-                  class="mt-2 bg-blue rounded-shaped"
-               >
-                  <v-toolbar class="bg-transparent">
-                     <v-toolbar-title>
-                        <h4>
-                           Todo lo que necesites en robótica de
-                           competencia
-                        </h4>
-                     </v-toolbar-title>
-                  </v-toolbar>
-                  <Section />
-               </v-col>
-               <v-toolbar color="transparent">
-                  <v-toolbar-title
-                     >Productos Populares</v-toolbar-title
-                  >
-               </v-toolbar>
-               <v-col cols="12" sm="12" class="mt-n10">
-                  <Popular />
-               </v-col>
-               <v-toolbar color="transparent" class="mt-n10">
-                  <v-toolbar-title
-                     >Productos destacados</v-toolbar-title
-                  >
-               </v-toolbar>
-               <v-col cols="12" sm="12" class="mt-n10">
-                  <Featured />
-               </v-col>
-               <v-col cols="12" sm="12" class="m-0 p-0">
-                  <Client />
-               </v-col>
-               <v-toolbar color="transparent" class="mt-5">
-                  <v-toolbar-title>Novedades</v-toolbar-title>
-               </v-toolbar>
-               <v-col cols="12" sm="12" class="mt-n10">
-                  <NovedadesVue />
-               </v-col>
-            </v-row>
-         </v-container>
-         <v-col cols="12" sm="12">
-            <v-carousel height="300">
-               <v-carousel-item
-                  v-for="(item, i) in items"
-                  :key="i"
-                  :src="item.src"
-                  cover
-               >
-               </v-carousel-item>
-            </v-carousel>
+   <v-container fluid style="background-color: #e3e6e6">
+      <v-row>
+         <v-col cols="12" sm="12" class="bg-blue rounded">
+            <v-toolbar class="bg-transparent">
+               <v-toolbar-title>
+                  <h5>
+                     Todo lo que necesites en robótica de
+                     competencia
+                  </h5>
+               </v-toolbar-title>
+            </v-toolbar>
+            <Section />
          </v-col>
-      </v-main>
-   </v-app>
+         <v-toolbar color="transparent">
+            <v-toolbar-title>
+               Productos Populares
+            </v-toolbar-title>
+         </v-toolbar>
+         <v-col cols="12" sm="12" class="mt-n10">
+            <Popular />
+         </v-col>
+         <v-toolbar color="transparent">
+            <v-toolbar-title>
+               Productos destacados
+            </v-toolbar-title>
+         </v-toolbar>
+         <v-col cols="12" sm="12" class="mt-n10">
+            <Featured />
+         </v-col>
+         <v-col cols="12" sm="12" class="mt-n10">
+            <Client />
+         </v-col>
+         <v-toolbar color="transparent">
+            <v-toolbar-title>Novedades</v-toolbar-title>
+         </v-toolbar>
+         <v-col cols="12" sm="12" class="mt-n10">
+            <NovedadesVue />
+         </v-col>
+      </v-row>
+      <v-col cols="12" sm="12">
+         <v-carousel height="300">
+            <v-carousel-item
+               v-for="(item, i) in items"
+               :key="i"
+               :src="item.src"
+               cover
+            >
+            </v-carousel-item>
+         </v-carousel>
+      </v-col>
+   </v-container>
 </template>
 
 <script setup>
@@ -88,14 +80,4 @@ const items = [
 ]
 </script>
 
-<style scoped>
-@media (max-width: 768px) {
-   /* .banner {
-        display: none;
-    }
-
-    .banner-content {
-        display: none;
-    } */
-}
-</style>
+<style scoped></style>

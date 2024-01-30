@@ -1,14 +1,28 @@
 <template>
-   <v-row style="background-color: #080a21">
+   <v-row
+      style="
+         background: linear-gradient(
+            to bottom,
+            #080a21,
+            #000000
+         );
+      "
+   >
       <v-col cols="12" sm="6" md="3">
          <v-card
-            class="mx-auto my-12 pb-4"
+            class="mx-auto my-12 pb-4 text-white"
             max-width="374"
             flat
-            color="#080A21"
+            style="
+               background: linear-gradient(
+                  to bottom,
+                  #080a21,
+                  #000000
+               );
+            "
             elevation="10"
          >
-            <v-img :src="avata" max-height="200px"> </v-img>
+            <v-img :src="avata" max-height="150px"> </v-img>
             <v-card-item>
                <v-card-title class="text-center">
                   Ofertas del dia
@@ -30,13 +44,18 @@
          v-for="(client, i) in clients"
          :key="i"
       >
-         <v-card class="mx-auto my-12 p-2" max-width="374">
-            <v-img
-               height="200"
-               class="mx-4"
-               elevation-10
-               :src="client.img"
+         <v-card
+            class="mx-auto my-12 rounded"
+            max-width="324"
+            elevation-10
+         >
+            <v-icon
+               class="icono-vista"
+               @click="mostrarDetalle(client)"
             >
+               mdi-eye
+            </v-icon>
+            <v-img height="150" class="mx-4" :src="client.img">
             </v-img>
 
             <v-card-item class="mt-n4">
@@ -45,9 +64,6 @@
                </v-card-title>
             </v-card-item>
             <v-card-text>
-               <div class="text-center">
-                  {{ client.bio }}
-               </div>
                <v-row
                   align="center"
                   class="mx-0 mt-2 d-flex justify-content-center"
@@ -55,22 +71,48 @@
                   <v-card-text
                      class="d-flex justify-content-center"
                   >
-                     <p class="font-weight-medium">
+                     <v-chip
+                        color="primary"
+                        dark
+                        class="d-flex justify-content-center"
+                     >
                         $USD {{ client.price }}
-                     </p>
+                     </v-chip>
                   </v-card-text>
+                  <v-snackbar
+                     :timeout="2000"
+                     color="deep-purple-accent-4"
+                     elevation="24"
+                  >
+                     <template v-slot:activator="{ props }">
+                        <v-btn
+                           :loading="client.loading"
+                           class="w-100 bg-primary"
+                           height="30"
+                           variant="outlined"
+                           v-bind="props"
+                           @click="agregarAlCarrito(client)"
+                        >
+                           Añadir al carrito
+                        </v-btn>
+                     </template>
 
+                     Se ha añadido con éxito un nuevo producto al
+                     carrito
+                  </v-snackbar>
                   <v-btn
-                     :loading="client.loading"
-                     class="flex-grow-1"
+                     class="flex-grow-1 mt-4 text-white w-100"
+                     style="background-color: #080a21"
                      height="48"
                      variant="outlined"
-                     @click="agregarAlCarrito(client)"
                   >
-                     Añadir al carrito
+                     Comprar
                   </v-btn>
                </v-row>
             </v-card-text>
+            <v-dialog v-model="dialogVisible">
+               <DetailProduct :producto="productoSeleccionado" />
+            </v-dialog>
          </v-card>
       </v-col>
    </v-row>
@@ -81,6 +123,7 @@ import { ref, onMounted } from 'vue'
 import { useStore } from 'vuex'
 import avatar from '../assets/avatar.png'
 import { useCountdown } from '@/utils/funciones.js'
+import DetailProduct from '@/components/DetailProduct.vue'
 const { countdown, calculateCountdown } = useCountdown()
 
 const avata = avatar
@@ -89,6 +132,14 @@ const store = useStore()
 onMounted(() => {
    calculateCountdown()
 })
+
+const dialogVisible = ref(false)
+const productoSeleccionado = ref(null)
+
+const mostrarDetalle = (producto) => {
+   productoSeleccionado.value = { ...producto }
+   dialogVisible.value = true
+}
 
 const clients = ref([
    {
@@ -132,3 +183,20 @@ const agregarAlCarrito = (producto) => {
    }, 1000)
 }
 </script>
+
+<style scoped>
+.img {
+   cursor: pointer;
+}
+
+.icono-vista {
+   position: absolute;
+   top: 10px;
+   right: 10px;
+   cursor: pointer;
+   z-index: 1;
+}
+.icono-vista:hover {
+   color: #adeec7;
+}
+</style>

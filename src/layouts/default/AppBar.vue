@@ -1,10 +1,10 @@
 <template>
-   <v-app-bar color="#080a21" prominent>
+   <v-app-bar color="#080a21">
       <v-app-bar-nav-icon
          variant="text"
          @click.stop="drawer = !drawer"
-      ></v-app-bar-nav-icon>
-
+      >
+      </v-app-bar-nav-icon>
       <img
          src="@/assets/logo_light.png"
          alt="Logo"
@@ -29,8 +29,10 @@
             </p>
          </v-btn>
       </v-list-item>
+      <v-dialog v-model="store.state.dialog">
+         <Carrito />
+      </v-dialog>
    </v-app-bar>
-
    <v-navigation-drawer
       v-model="drawer"
       location="left"
@@ -45,16 +47,13 @@
             @click="navigateTo(item.route)"
          >
             <v-list-item-content>
-               <v-list-item-title>{{
-                  item.title
-               }}</v-list-item-title>
+               <v-list-item-title>
+                  {{ item.title }}
+               </v-list-item-title>
             </v-list-item-content>
          </v-list-item>
       </v-list>
    </v-navigation-drawer>
-   <v-dialog v-model="store.state.dialog">
-      <Carrito />
-   </v-dialog>
 </template>
 
 <script setup>
@@ -104,11 +103,11 @@ const items = [
    },
    {
       title: 'Robot Challenge',
-      route: '/#',
+      route: '/robot-challenge',
    },
    {
       title: 'Sobre Nostoros',
-      route: '/#',
+      route: '/sobre-nosotros',
    },
 ]
 
@@ -131,5 +130,5 @@ watch(carritoCount, () => {
 </script>
 
 <style scoped>
-@import '@/styles/appBar.css';
+ @import '@/styles/appBar.css';
 </style>

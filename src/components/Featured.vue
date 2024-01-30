@@ -11,15 +11,21 @@
          <v-card
             class="mx-auto my-12 pb-4"
             max-width="374"
-            elevation="3"
+            elevation="10"
          >
-            <v-img height="250" class="mx-4" :src="feature.img">
+            <v-icon
+               class="icono-vista"
+               @click="mostrarDetalle(feature)"
+            >
+               mdi-eye
+            </v-icon>
+            <v-img height="250" class="mx-4 img" :src="feature.img">
             </v-img>
 
             <v-card-item class="mt-n4">
-               <v-card-title class="text-center">{{
-                  feature.title
-               }}</v-card-title>
+               <v-card-title class="text-center">
+                  {{ feature.title }}
+               </v-card-title>
             </v-card-item>
 
             <v-card-text>
@@ -33,22 +39,48 @@
                   <v-card-text
                      class="d-flex justify-content-center"
                   >
-                     <p class="font-weight-medium">
-                        $USD {{ feature.price }}
-                     </p>
+                  <v-chip
+                  color="primary"
+                  dark
+                  class="d-flex justify-content-center"
+               >
+                  $USD {{ feature.price }}
+               </v-chip>
                   </v-card-text>
+                  <v-snackbar
+                     :timeout="2000"
+                     color="deep-purple-accent-4"
+                     elevation="24"
+                  >
+                     <template v-slot:activator="{ props }">
+                        <v-btn
+                           :loading="feature.loading"
+                           class="w-100 bg-primary"
+                           height="30"
+                           variant="outlined"
+                           v-bind="props"
+                           @click="agregarAlCarrito(feature)"
+                        >
+                           Añadir al carrito
+                        </v-btn>
+                     </template>
 
+                     Se ha añadido con éxito un nuevo producto al
+                     carrito
+                  </v-snackbar>
                   <v-btn
-                     :loading="feature.loading"
-                     class="flex-grow-1"
+                     class="flex-grow-1 mt-4 text-white w-100"
+                     style="background-color: #080a21"
                      height="48"
                      variant="outlined"
-                     @click="agregarAlCarrito(feature)"
                   >
-                     Añadir al carrito
+                     Comprar
                   </v-btn>
                </v-row>
             </v-card-text>
+            <v-dialog v-model="dialogVisible">
+               <DetailProduct :producto="productoSeleccionado" />
+            </v-dialog>
          </v-card>
       </v-col>
    </v-row>
@@ -57,8 +89,17 @@
 <script setup>
 import { useStore } from 'vuex'
 import { ref } from 'vue'
+import DetailProduct from '@/components/DetailProduct.vue'
 
 const store = useStore()
+
+const dialogVisible = ref(false)
+const productoSeleccionado = ref(null)
+
+const mostrarDetalle = (producto) => {
+   productoSeleccionado.value = { ...producto }
+   dialogVisible.value = true
+}
 const featured = ref([
    {
       img: 'image/5.png',
@@ -109,4 +150,19 @@ const agregarAlCarrito = (producto) => {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.img {
+   cursor: pointer;
+}
+
+.icono-vista {
+   position: absolute;
+   top: 10px;
+   right: 10px;
+   cursor: pointer;
+   z-index: 1;
+}
+.icono-vista:hover {
+   color: #adeec7;
+}
+</style>
