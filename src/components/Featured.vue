@@ -70,7 +70,7 @@
                   </v-snackbar>
                   <v-btn
                      class="flex-grow-1 mt-4 text-white w-100"
-                     style="background-color: #080a21"
+                     style="background-color: #232f3e"
                      height="48"
                      variant="outlined"
                   >

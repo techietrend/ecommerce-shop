@@ -5,6 +5,7 @@ export default createStore({
       carrito: [],
       dialog: false,
       subTotal: 0,
+      dialogDetail: false,
    },
    mutations: {
       agregarAlCarrito(state, producto) {

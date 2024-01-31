@@ -1,109 +1,115 @@
 <template>
    <v-container>
       <h2>Detalles de la Facturación</h2>
-      <div class="d-flex">
-         <v-list
-            class="w-50"
-            style="
-               background-color: whitesmoke;
-               padding: 50px;
-               border: 1px solid #080a21;
-               border-radius: 5px;
-            "
-         >
-            <p class="h6">Completar Datos</p>
-            <form @submit.prevent="submit">
-               <v-text-field
-                  v-model="name.value.value"
-                  :counter="10"
-                  :error-messages="name.errorMessage.value"
-                  label="Name"
-               ></v-text-field>
-
-               <v-text-field
-                  v-model="phone.value.value"
-                  :counter="7"
-                  :error-messages="phone.errorMessage.value"
-                  label="Phone Number"
-               ></v-text-field>
-
-               <v-text-field
-                  v-model="email.value.value"
-                  :error-messages="email.errorMessage.value"
-                  label="E-mail"
-               ></v-text-field>
-
-               <v-select
-                  v-model="select.value.value"
-                  :items="items"
-                  :error-messages="select.errorMessage.value"
-                  label="Envío"
-               ></v-select>
-               <div class="d-flex justify-content-end">
-                  <v-checkbox
-                     v-model="checkbox.value.value"
-                     :error-messages="
-                        checkbox.errorMessage.value
-                     "
-                     value="1"
-                     label="Acepta terminos y condiciones"
-                     type="checkbox"
-                  ></v-checkbox>
-
-                  <v-btn @click="handleReset">
-                     Borrar campos
-                  </v-btn>
-               </div>
-            </form>
-         </v-list>
-         <v-list class="w-50">
-            <v-list-item
-               v-for="(product, index) in productos"
-               :key="index"
+      <v-row>
+         <v-col cols="12" md="6">
+            <v-list
+               style="
+                  background-color: whitesmoke;
+                  padding: 20px;
+                  border: 1px solid #080a21;
+                  border-radius: 5px;
+               "
             >
-               <div class="item-content justify-space-between">
-                  <div class="pl-5 d-flex">
-                     <v-img
-                        :src="product.imagen"
-                        style="width: 50px; height: 50px"
-                     />
-                  </div>
-                  <div>
-                     <v-list-item-title class="text-muted"
-                        >Cantidad x
-                        {{ product.cantidad }}</v-list-item-title
-                     >
-                  </div>
-                  <div>
-                     <v-list-item-title>{{
-                        product.nombre
-                     }}</v-list-item-title>
-                  </div>
-                  <div>
-                     <v-list-item-title
-                        >Usd${{
-                           product.precio
-                        }}</v-list-item-title
-                     >
-                  </div>
-               </div>
-            </v-list-item>
-         </v-list>
-      </div>
+               <p class="h6">Completar Datos</p>
+               <form @submit.prevent="submit">
+                  <v-text-field
+                     v-model="name.value.value"
+                     :counter="10"
+                     :error-messages="name.errorMessage.value"
+                     label="Name"
+                  ></v-text-field>
 
-      <div class="d-flex w-100 justify-content-end">
-         <div class="mt-2">
-            <h5>Subtotal: Usd$ {{ subtotal }}</h5>
-         </div>
-      </div>
+                  <v-text-field
+                     v-model="phone.value.value"
+                     :counter="7"
+                     :error-messages="phone.errorMessage.value"
+                     label="Phone Number"
+                  ></v-text-field>
 
-      <div class="d-flex justify-content-end">
-         <v-btn
-            @click="realizarCompra"
-            class="mt-5 mb-10 w-25 bg-warning"
-            >Realizar Compra</v-btn
+                  <v-text-field
+                     v-model="email.value.value"
+                     :error-messages="email.errorMessage.value"
+                     label="E-mail"
+                  ></v-text-field>
+
+                  <v-select
+                     v-model="select.value.value"
+                     :items="items"
+                     :error-messages="select.errorMessage.value"
+                     label="Envío"
+                  ></v-select>
+
+                  <div class="d-flex justify-space-between">
+                     <v-checkbox
+                        v-model="checkbox.value.value"
+                        :error-messages="
+                           checkbox.errorMessage.value
+                        "
+                        value="1"
+                        label="Acepta términos y condiciones"
+                        type="checkbox"
+                     ></v-checkbox>
+
+                     <v-btn @click="handleReset">
+                        Borrar campos
+                     </v-btn>
+                  </div>
+               </form>
+            </v-list>
+         </v-col>
+         <v-col cols="12" md="6">
+            <v-list>
+               <v-list-item
+                  v-for="(product, index) in productos"
+                  :key="index"
+               >
+                  <div
+                     class="item-content justify-space-between"
+                  >
+                     <div class="pl-5 d-flex">
+                        <v-img
+                           :src="product.imagen[0]"
+                           style="width: 50px; height: 50px"
+                        />
+                     </div>
+                     <div>
+                        <v-list-item-title class="text-muted">
+                           Cantidad x {{ product.cantidad }}
+                        </v-list-item-title>
+                     </div>
+                     <div>
+                        <v-list-item-title>{{
+                           product.nombre
+                        }}</v-list-item-title>
+                     </div>
+                     <div>
+                        <v-list-item-title>
+                           Usd${{ product.precio }}
+                        </v-list-item-title>
+                     </div>
+                  </div>
+               </v-list-item>
+            </v-list>
+         </v-col>
+      </v-row>
+      <v-row class="mt-10">
+         <v-col
+            cols="12"
+            md="8"
+            class="p-0 m-0 d-flex justify-end"
          >
-      </div>
+            <div class="w-50">
+               <h5>Subtotal: Usd$ {{ subtotal }}</h5>
+               <v-btn
+                  @click="realizarCompra"
+                  class="w-100 w-md-auto bg-warning"
+               >
+                  Realizar Compra
+               </v-btn>
+            </div>
+         </v-col>
+      </v-row>
    </v-container>
 </template>
 

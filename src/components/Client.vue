@@ -55,12 +55,12 @@
             >
                mdi-eye
             </v-icon>
-            <v-img 
-                  height="150" 
-                  class="mx-4 img" 
-                  :src="client.img"
-                  @click="mostrarDetalle(client)"
-                  >
+            <v-img
+               height="150"
+               class="mx-4 img"
+               :src="client.img"
+               @click="mostrarDetalle(client)"
+            >
             </v-img>
 
             <v-card-item class="mt-n4">
@@ -107,7 +107,7 @@
                   </v-snackbar>
                   <v-btn
                      class="flex-grow-1 mt-4 text-white w-100"
-                     style="background-color: #080a21"
+                     style="background-color: #232f3e"
                      height="48"
                      variant="outlined"
                   >

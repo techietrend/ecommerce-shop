@@ -23,7 +23,7 @@
                height="230"
                width="230"
                class="mx-auto img"
-               :src="popular.img"
+               :src="popular.img[0]"
             >
             </v-img>
             <v-card-item class="mt-n4">
@@ -70,7 +70,7 @@
                   </v-snackbar>
                   <v-btn
                      class="flex-grow-1 mt-4 text-white w-100"
-                     style="background-color: #080a21"
+                     style="background-color: #232f3e"
                      height="48"
                      variant="outlined"
                   >
@@ -93,38 +93,58 @@ import DetailProduct from '@/components/DetailProduct.vue'
 
 const store = useStore()
 
-const dialogVisible = ref(false)
+const dialogVisible = ref(store.state.dialogDetail)
 const productoSeleccionado = ref(null)
 
 const mostrarDetalle = (producto) => {
    productoSeleccionado.value = { ...producto }
-   dialogVisible.value = true
+   dialogVisible.value = !false;
 }
 
 const populars = ref([
    {
-      img: 'popular/1.jpg',
+      img: [
+         'popular/1.jpg',
+         'popular/2.png',
+         'popular/3.jpg',
+         'popular/4.png',
+      ],
       title: 'Wayxin R5',
       price: '99.8',
       bio: ' Intercomunicador R5 para cascos, auriculares con Radio FM. Asistente de voz inteligente, rápido doble clic en el botón del teléfono para iniciar el asistente de voz del teléfono (conectado al estado del teléfono), para lograr la interacción con el teléfono, IPX6 nivel impermeable, sin miedo a la lluvia, valiente para seguir adelante',
       loading: false,
    },
    {
-      img: 'popular/2.png',
+      img: [
+         'popular/1.jpg',
+         'popular/2.png',
+         'popular/3.jpg',
+         'popular/4.png',
+      ],
       title: 'Appel Mac Book Pro',
       price: '99.8',
       bio: ' Small plates, salads & sandwiches - an intimate setting with 12 indoor seats plus patio seating.',
       loading: false,
    },
    {
-      img: 'popular/3.jpg',
+      img: [
+         'popular/3.jpg',
+         'popular/4.png',
+         'popular/1.jpg',
+         'popular/2.png',
+      ],
       title: 'Mini Microfono',
       price: '99.8',
       bio: ' Small plates, salads & sandwiches - an intimate setting with 12 indoor seats plus patio seating.',
       loading: false,
    },
    {
-      img: 'popular/4.png',
+      img: [
+         'popular/4.png',
+         'popular/1.jpg',
+         'popular/3.jpg',
+         'popular/4.png',
+      ],
       title: 'Reloj',
       price: '99.8',
       bio: ' Small plates, salads & sandwiches - an intimate setting with 12 indoor seats plus patio seating.',

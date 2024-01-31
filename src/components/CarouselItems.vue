@@ -6,7 +6,7 @@
       <Slide v-for="(item, index) in items" :key="index">
          <v-sheet class="carousel__item">
             <v-card
-               class="card-hover p-1 bg-dark mt-8"
+               class="card-hover p-1 bg-dark mt-5"
                height="130"
                width="130"
                elevation-10
