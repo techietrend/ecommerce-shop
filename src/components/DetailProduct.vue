@@ -77,4 +77,11 @@ const slideTo = (val) => {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.carousel__item{
+   margin: 0px;
+   padding: 0px;
+   border: 1px solid #232f3e;
+   border-radius: 10px;
+}
+</style>
